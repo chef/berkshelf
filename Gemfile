@@ -7,12 +7,9 @@ group :build do
 end
 
 group :development do
-  gem 'aruba', '~> 2.1'
-  # gem "aruba",         "~> 0.10" # Stay below 1 until aruba/in_process monkeypatching stops
-  gem "cucumber",      "~> 8.0"
-  gem "cucumber-expressions", "~> 8.3"
-  # gem "cucumber",      "< 4.0" # until we identify what is generating the ~@no_run tag in CI
-  # gem "cucumber-expressions", "= 5.0.13"
+  gem "aruba",         "~> 0.10" # Stay below 1 until aruba/in_process monkeypatching stops
+  gem "cucumber",      "= 3.1.0" # until we identify what is generating the ~@no_run tag in CI
+  gem "cucumber-expressions", "= 5.0.13"
   gem "chef-zero",     ">= 4.0"
   gem "dep_selector",  ">= 1.0"
   gem "fuubar",        ">= 2.0"
