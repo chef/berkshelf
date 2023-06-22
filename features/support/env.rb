@@ -3,8 +3,9 @@ def windows?
 end
 
 require "aruba/cucumber"
-require "aruba/in_process"
-require "aruba/spawn_process"
+require 'aruba/processes/spawn_process'
+# require "aruba/in_process"
+# require "aruba/spawn_process"
 require "cucumber/rspec/doubles"
 
 Dir["spec/support/**/*.rb"].each { |f| require File.expand_path(f) }
