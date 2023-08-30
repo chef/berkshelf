@@ -1,4 +1,5 @@
 require "spec_helper"
+require "pry-byebug"
 
 describe Berkshelf::APIClient::Connection do
   let(:instance) { described_class.new("http://supermarket.getchef.com") }
@@ -130,6 +131,7 @@ describe Berkshelf::APIClient::Connection do
     end
 
     it "raises Berkshelf::APIClient::ServiceUnavailable for 500s" do
+      binding.pry
       stub_request(:get, "http://supermarket.getchef.com/universe").to_return(status: [500, "Internal Server Error"])
       expect { subject }.to raise_error(Berkshelf::APIClient::ServiceUnavailable)
     end
