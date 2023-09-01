@@ -19,6 +19,8 @@ Berkshelf is now included as part of the [Chef Workstation](https://downloads.ch
 
 > note: You may need to uninstall the Berkshelf gem especially if you are using a Ruby version manager you may need to uninstall all Berkshelf gems from each Ruby installation.
 
+
+
 ### From Rubygems
 
 If you are a developer or you prefer to install from Rubygems, we've got you covered.
