@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "mixlib-shellout",      ">= 2.0", "< 4.0"
   s.add_dependency "cleanroom",            "~> 1.0"
-  s.add_dependency "minitar",              ">= 0.6"
+  s.add_dependency "minitar",              ">= 0.6", "< 0.12"
   s.add_dependency "retryable",            ">= 2.0", "< 4.0"
   s.add_dependency "solve",                "~> 4.0"
   s.add_dependency "thor",                 ">= 0.20"
@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   s.add_dependency "mixlib-archive",       ">= 1.1.4", "< 2.0" # needed for ruby 3.0 / Dir.chdir removal
   s.add_dependency "concurrent-ruby",      "~> 1.0"
   if RUBY_VERSION.match?(/3.0/)
-    s.add_dependency "chef",                 "~> 17.0" # needed for --skip-syntax-check
+    s.add_dependency "chef",                 "~> 17.10.122" # needed for --skip-syntax-check
   elsif 
     s.add_dependency "chef",                 ">= 15.7.32" 
   end
