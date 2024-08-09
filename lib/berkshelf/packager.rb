@@ -1,4 +1,4 @@
-require "archive/tar/minitar"
+require "minitar"
 require "find" unless defined?(Find)
 require "zlib" unless defined?(Zlib)
 
@@ -47,7 +47,7 @@ module Berkshelf
         Find.find(source) do |entry|
           next if source == entry
 
-          Archive::Tar::Minitar.pack_file(entry, tar)
+          Minitar.pack_file(entry, tar)
         end
       ensure
         tar.close
@@ -79,12 +79,12 @@ module Berkshelf
     # @return [String]
     attr_reader :filename
 
-    # A private decorator for Archive::Tar::Minitar::Writer that
+    # A private decorator for Minitar::Writer that
     # turns absolute paths into relative ones.
     class RelativeTarWriter < SimpleDelegator # :nodoc:
       def initialize(io, base_path)
         @base_path = Pathname.new(base_path)
-        super(Archive::Tar::Minitar::Writer.new(io))
+        super(Minitar::Writer.new(io))
       end
 
       %w{add_file add_file_simple mkdir}.each do |method|

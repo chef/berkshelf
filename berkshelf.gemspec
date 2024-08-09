@@ -33,9 +33,17 @@ Gem::Specification.new do |s|
     "changelog_uri"   => "https://github.com/chef/berkshelf/blob/main/CHANGELOG.md",
   }
 
+  ruby_version = Gem::Version.new(RUBY_VERSION)
+
   s.add_dependency "mixlib-shellout",      ">= 2.0", "< 4.0"
   s.add_dependency "cleanroom",            "~> 1.0"
-  s.add_dependency "minitar",              ">= 0.6"
+
+  if ruby_version >= "3.1"
+    s.add_dependency "minitar",              "~> 1.0"
+  else
+    s.add_dependency "minitar",              "~> 0.12"
+  end
+
   s.add_dependency "retryable",            ">= 2.0", "< 4.0"
   s.add_dependency "solve",                "~> 4.0"
   s.add_dependency "thor",                 ">= 0.20"
@@ -44,8 +52,8 @@ Gem::Specification.new do |s|
   s.add_dependency "concurrent-ruby",      "~> 1.0"
   if RUBY_VERSION.match?(/3.0/)
     s.add_dependency "chef",                 "~> 17.0" # needed for --skip-syntax-check
-  elsif 
-    s.add_dependency "chef",                 ">= 15.7.32" 
+  elsif
+    s.add_dependency "chef",                 ">= 15.7.32"
   end
   s.add_dependency "chef-config"
   # this is required for Mixlib::Config#from_json
