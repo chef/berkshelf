@@ -628,7 +628,7 @@ Feature: berks install
     Given I use a fixture named "complex-cookbook-path"
     And a file named "Berksfile" with:
       """
-      source chef_repo: '.'
+      source({ :chef_repo => '.' })
 
       cookbook 'jenkins-config'
       """
@@ -639,8 +639,8 @@ Feature: berks install
       """
     And the output should contain:
      """
-      Installing jenkins-config (0.1.0) from
-      """
+     Installing jenkins-config (0.1.0) from
+     """
     And the cookbook store should have the cookbooks:
       | jenkins        | 2.0.1 |
       | jenkins-config | 0.1.0 |
