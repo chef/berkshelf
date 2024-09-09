@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $PSDefaultParameterValues['*:ErrorAction']='Stop'
 
 $pkg_name="berkshelf"
-$pkg_origin="ngupta26"
+$pkg_origin="core"
 $pkg_version=$(Get-Content "$PLAN_CONTEXT/../VERSION")
 $pkg_revision="1"
 $pkg_maintainer="The Chef Maintainers <humans@chef.io>"

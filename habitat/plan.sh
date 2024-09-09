@@ -1,5 +1,5 @@
 pkg_name=berkshelf
-pkg_origin=ngupta26
+pkg_origin=core
 pkg_version="8.0.15"
 pkg_description="Manage Chef Infra cookbooks and cookbook dependencies"
 pkg_license=('Apache-2.0')
