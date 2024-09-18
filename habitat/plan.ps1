@@ -35,8 +35,10 @@ function Invoke-Build {
         bundle config --local jobs 4
         bundle config --local retry 5
         bundle config --local silence_root_warning 1
+        # bundle config set --local without dep_selector
+        # bundle config set --local without dep-selector-libgecode
         Write-BuildLine " ** Using bundler to retrieve the Ruby dependencies"
-        bundle install
+        bundle install --without development
 
         gem build berkshelf.gemspec
 	Write-BuildLine " ** Using gem to  install"

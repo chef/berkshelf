@@ -19,8 +19,10 @@ group :development do
   gem "webmock",       ">= 1.11"
   gem "http",          ">= 0.9.8"
   gem "chefstyle"
-  gem "appbundler"
 end
+
+gem "appbundler"
+
 
 instance_eval(ENV["GEMFILE_MOD"]) if ENV["GEMFILE_MOD"]
 
