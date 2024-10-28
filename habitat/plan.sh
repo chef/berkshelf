@@ -1,6 +1,7 @@
 _chef_client_ruby="core/ruby31"
-pkg_name=berkshelf
-pkg_origin=core
+pkg_name="berkshelf"
+pkg_origin=chef
+pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 pkg_description="Manage Chef Infra cookbooks and cookbook dependencies"
 pkg_license=('Apache-2.0')
 pkg_bin_dirs=(

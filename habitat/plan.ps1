@@ -2,9 +2,8 @@ $ErrorActionPreference = "Stop"
 $PSDefaultParameterValues['*:ErrorAction']='Stop'
 
 $pkg_name="berkshelf"
-$pkg_origin="core"
+$pkg_origin="chef"
 $pkg_version=$(Get-Content "$PLAN_CONTEXT/../VERSION")
-$pkg_revision="8.0.15"
 $pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 
 $pkg_deps=@(
@@ -14,6 +13,14 @@ $pkg_deps=@(
 $pkg_bin_dirs=@("bin"
                 "vendor/bin")
 $project_root= (Resolve-Path "$PLAN_CONTEXT/../").Path
+
+function pkg_version {
+    Get-Content "$SRC_PATH/VERSION"
+}
+
+function Invoke-Before {
+    Set-PkgVersion
+}
 
 function Invoke-SetupEnvironment {
     Push-RuntimeEnv -IsPath GEM_PATH "$pkg_prefix/vendor"
@@ -35,14 +42,12 @@ function Invoke-Build {
         bundle config --local jobs 4
         bundle config --local retry 5
         bundle config --local silence_root_warning 1
-        # bundle config set --local without dep_selector
-        # bundle config set --local without dep-selector-libgecode
         Write-BuildLine " ** Using bundler to retrieve the Ruby dependencies"
         bundle install --without development
 
         gem build berkshelf.gemspec
-	Write-BuildLine " ** Using gem to  install"
-	gem install berkshelf-*.gem --no-document
+	    Write-BuildLine " ** Using gem to  install"
+	    gem install berkshelf-*.gem --no-document
         
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
