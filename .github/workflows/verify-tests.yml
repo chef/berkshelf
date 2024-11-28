@@ -3,10 +3,10 @@ name: Run Rake Tests
 on:
   push:
     branches:
-      - main
+      - workstation-LTS
   pull_request:
     branches:
-      - main
+      - workstation-LTS
 
 jobs:
   unit-tests:

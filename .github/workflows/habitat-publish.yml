@@ -3,7 +3,7 @@ name: Publish Habitat packages
 on:
   push:
     branches:
-      - main
+      - workstation-LTS
   release:
     types:
       - created
