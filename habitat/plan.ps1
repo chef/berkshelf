@@ -1,6 +1,7 @@
 $ErrorActionPreference = "Stop"
 $PSDefaultParameterValues['*:ErrorAction']='Stop'
 
+$env:HAB_BLDR_CHANNEL = "LTS-2024"
 $pkg_name="berkshelf"
 $pkg_origin="chef"
 $pkg_version=$(Get-Content "$PLAN_CONTEXT/../VERSION")
@@ -48,7 +49,6 @@ function Invoke-Build {
         gem build berkshelf.gemspec
 	    Write-BuildLine " ** Using gem to  install"
 	    gem install berkshelf-*.gem --no-document
-        
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
     } finally {
