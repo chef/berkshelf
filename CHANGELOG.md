@@ -1,5 +1,5 @@
-<!-- latest_release 0.1.1 -->
-## [v0.1.1](https://github.com/chef/berkshelf/tree/v0.1.1) (2025-01-06)
+<!-- latest_release 0.1.2 -->
+## [v0.1.2](https://github.com/chef/berkshelf/tree/v0.1.2) (2025-01-06)
 
 #### Merged Pull Requests
 - Adding back the pipelines [#44](https://github.com/chef/berkshelf/pull/44) ([nikhil2611](https://github.com/nikhil2611))
