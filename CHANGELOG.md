@@ -1,14 +1,15 @@
-<!-- latest_release 0.1.7 -->
-## [v0.1.7](https://github.com/chef/berkshelf/tree/v0.1.7) (2025-01-06)
+<!-- latest_release 0.1.8 -->
+## [v0.1.8](https://github.com/chef/berkshelf/tree/v0.1.8) (2025-01-06)
 
 #### Merged Pull Requests
-- Test pipeline with empty commit [#47](https://github.com/chef/berkshelf/pull/47) ([nikhil2611](https://github.com/nikhil2611))
+- Testing pipelines and added agents promote workload [#48](https://github.com/chef/berkshelf/pull/48) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.0.12 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Testing pipelines and added agents promote workload [#48](https://github.com/chef/berkshelf/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.8 -->
 - Test pipeline with empty commit [#47](https://github.com/chef/berkshelf/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.7 -->
 - Adding back the pipeline back [#46](https://github.com/chef/berkshelf/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.5 -->
 - commenting the pipelines [#45](https://github.com/chef/berkshelf/pull/45) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.3 -->
