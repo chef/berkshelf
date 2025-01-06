@@ -1,14 +1,15 @@
-<!-- latest_release 0.1.2 -->
-## [v0.1.2](https://github.com/chef/berkshelf/tree/v0.1.2) (2025-01-06)
+<!-- latest_release 0.1.3 -->
+## [v0.1.3](https://github.com/chef/berkshelf/tree/v0.1.3) (2025-01-06)
 
 #### Merged Pull Requests
-- Adding back the pipelines [#44](https://github.com/chef/berkshelf/pull/44) ([nikhil2611](https://github.com/nikhil2611))
+- commenting the pipelines [#45](https://github.com/chef/berkshelf/pull/45) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.0.12 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- commenting the pipelines [#45](https://github.com/chef/berkshelf/pull/45) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.3 -->
 - Adding back the pipelines [#44](https://github.com/chef/berkshelf/pull/44) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.1 -->
 - Added the release branch [#42](https://github.com/chef/berkshelf/pull/42) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.0.16 -->
 - PR #11 rebase Allow users to user octokit 5.x [#35](https://github.com/chef/berkshelf/pull/35) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.0.15 -->
