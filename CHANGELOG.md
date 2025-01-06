@@ -1,14 +1,15 @@
-<!-- latest_release 0.1.11 -->
-## [v0.1.11](https://github.com/chef/berkshelf/tree/v0.1.11) (2025-01-06)
+<!-- latest_release 0.1.12 -->
+## [v0.1.12](https://github.com/chef/berkshelf/tree/v0.1.12) (2025-01-06)
 
 #### Merged Pull Requests
-- Updating config to fix promote to dev channel [#51](https://github.com/chef/berkshelf/pull/51) ([nikhil2611](https://github.com/nikhil2611))
+- empty commit [#52](https://github.com/chef/berkshelf/pull/52) ([sanghinitin](https://github.com/sanghinitin))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.0.12 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- empty commit [#52](https://github.com/chef/berkshelf/pull/52) ([sanghinitin](https://github.com/sanghinitin)) <!-- 0.1.12 -->
 - Updating config to fix promote to dev channel [#51](https://github.com/chef/berkshelf/pull/51) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.11 -->
 - Removed hab test pipeline duplicate [#50](https://github.com/chef/berkshelf/pull/50) ([sanghinitin](https://github.com/sanghinitin)) <!-- 0.1.10 -->
 - Test pipeline working with empty PR [#49](https://github.com/chef/berkshelf/pull/49) ([nikhil2611](https://github.com/nikhil2611)) <!-- 0.1.9 -->
