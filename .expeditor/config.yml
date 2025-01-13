@@ -18,7 +18,7 @@ github:
 
 release_branches:
   - workstation-LTS:
-      version_constraint: 0.*
+      version_constraint: 9.*
   - main:
       version_constraint: 8.*
 
@@ -86,3 +86,5 @@ subscriptions:
   - workload: project_promoted:{{agent_id}}:workstation-build:*
     actions:
       - built_in:promote_habitat_packages
+      # - built_in:rollover_changelog
+      # - built_in:publish_rubygems
