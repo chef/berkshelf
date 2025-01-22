@@ -1,3 +1,3 @@
 module Berkshelf
-  VERSION = "9.0.0".freeze
+  VERSION = "8.0.16".freeze
 end
