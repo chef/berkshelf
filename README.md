@@ -37,7 +37,7 @@ $ gem install berkshelf
 
 ## Usage
 
-See [docs.chef.io](https://docs.chef.io/workstation/berkshelf/) for up-to-date usage instructions.
+Check [docs.chef.io](https://docs.chef.io/workstation/berkshelf/) for up-to-date usage instructions.
 
 ## CLI Usage
 
