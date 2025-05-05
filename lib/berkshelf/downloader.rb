@@ -152,7 +152,13 @@ module Berkshelf
         unpack_dir   = Pathname.new(tmp_dir) + "#{name}-#{version}"
 
         url = remote_cookbook.location_path
-        URI.open(url, "rb") do |remote_file|
+        begin
+          uri = URI.parse(url)
+        rescue URI::InvalidURIError
+          raise "Invalid URI: #{url}"
+        end
+        uri = URI.parse(url)
+        uri.open("rb") do |remote_file|
           archive_path.open("wb") { |local_file| local_file.write remote_file.read }
         end
 
@@ -186,7 +192,7 @@ module Berkshelf
         resp = connection.get(cookbook_uri.request_uri + "&private_token=" + options["private_token"])
         return nil unless resp.status == 200
 
-        open(archive_path, "wb") { |file| file.write(resp.body) }
+        File.open(archive_path, "wb") { |file| file.write(resp.body) }
 
         Mixlib::Archive.new(archive_path).extract(unpack_dir)
 

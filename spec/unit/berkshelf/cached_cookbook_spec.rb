@@ -43,7 +43,7 @@ describe Berkshelf::CachedCookbook do
     describe "::checksum" do
       it "returns a checksum of the given filepath" do
         path = fixtures_path.join("cookbooks", "example_cookbook-0.5.0", "README.md")
-        expected_md5 = if IO.binread(path).include?("\r\n")
+        expected_md5 = if File.binread(path).include?("\r\n")
                          # On windows, with git configured for auto crlf
                          "2414583f86c9eb68bdbb0be391939341"
                        else

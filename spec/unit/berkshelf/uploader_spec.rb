@@ -15,7 +15,7 @@ module Berkshelf
 
     let(:graph) { double(Lockfile::Graph, locks: {}) }
     let(:self_signed_crt_path) { File.join(BERKS_SPEC_DATA, "trusted_certs") }
-    let(:self_signed_crt) { OpenSSL::X509::Certificate.new(IO.read("#{self_signed_crt_path}/example.crt")) }
+    let(:self_signed_crt) { OpenSSL::X509::Certificate.new(File.read("#{self_signed_crt_path}/example.crt")) }
     let(:cert_store) { OpenSSL::X509::Store.new.add_cert(self_signed_crt) }
     let(:ssl_policy) { double(SSLPolicy, store: cert_store) }
 
