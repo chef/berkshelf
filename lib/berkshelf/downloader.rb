@@ -157,7 +157,6 @@ module Berkshelf
         rescue URI::InvalidURIError
           raise "Invalid URI: #{url}"
         end
-        uri = URI.parse(url)
         uri.open("rb") do |remote_file|
           archive_path.open("wb") { |local_file| local_file.write remote_file.read }
         end
