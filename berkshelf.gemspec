@@ -61,7 +61,7 @@ Gem::Specification.new do |s|
   s.add_dependency "mixlib-archive",       ">= 1.1.4", "< 2.0" # needed for ruby 3.0 / Dir.chdir removal
   s.add_dependency "concurrent-ruby",      "~> 1.0"
 
-  s.add_dependency "ffi",                "~> 1.9", "< 1.16.0" #
+  s.add_dependency "ffi",                  ">= 1.15.5", "<= 1.16.3"
 
   s.add_dependency "chef-config"
   # this is required for Mixlib::Config#from_json
