@@ -18,29 +18,29 @@ Feature: Evaluating a Berksfile
       """
 
   Scenario: Containing methods I shouldn't be able to call
-    Given I write to "Berksfile" with:
-      """
-      add_location(:foo)
-      """
-    When I run `berks install`
-    Then the output should contain:
-      """
-      An error occurred while reading the Berksfile:
+  Given I write to "Berksfile" with:
+    """
+    add_location(:foo)
+    """
+  When I run `berks install`
+  Then the output should match:
+    """
+    An error occurred while reading the Berksfile:
 
-        undefined method 'add_location' for
-      """
-    And the exit status should be "BerksfileReadError"
+    \s+undefined method ['`]add_location['`] for #<.*>
+    """
+  And the exit status should be "BerksfileReadError"
 
   Scenario: Containing Ruby syntax errors
-    Given I write to "Berksfile" with:
-      """
-      ptus "This is a ruby syntax error"
-      """
-    When I run `berks install`
-    Then the output should contain:
-      """
-      An error occurred while reading the Berksfile:
+  Given I write to "Berksfile" with:
+    """
+    ptus "This is a ruby syntax error"
+    """
+  When I run `berks install`
+  Then the output should match:
+    """
+    An error occurred while reading the Berksfile:
 
-        undefined method 'ptus' for
-      """
-    And the exit status should be "BerksfileReadError"
+    \s+undefined method ['`]ptus['`] for #<.*>
+    """
+  And the exit status should be "BerksfileReadError"
