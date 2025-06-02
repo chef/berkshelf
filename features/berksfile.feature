@@ -27,7 +27,7 @@ Feature: Evaluating a Berksfile
       """
       An error occurred while reading the Berksfile:
 
-        undefined method `add_location' for
+        undefined method 'add_location' for
       """
     And the exit status should be "BerksfileReadError"
 
@@ -41,6 +41,6 @@ Feature: Evaluating a Berksfile
       """
       An error occurred while reading the Berksfile:
 
-        undefined method `ptus' for
+        undefined method 'ptus' for
       """
     And the exit status should be "BerksfileReadError"

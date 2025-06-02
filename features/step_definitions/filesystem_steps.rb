@@ -281,7 +281,7 @@ Then /^the file "(.*?)" in the directory "(.*?)" should not contain:$/ do |file_
 end
 
 Then(/^the directory "(.*?)" should contain version "(.*?)" of the "(.*?)" cookbook$/) do |path, version, name|
-  cookbook_path = File.join(current_dir, path)
+  cookbook_path = expand_path(path)
   cookbook = Berkshelf::CachedCookbook.from_path(cookbook_path)
   expect(cookbook.version).to eq(version)
   expect(cookbook.cookbook_name).to eq(name)
