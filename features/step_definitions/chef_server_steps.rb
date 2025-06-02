@@ -28,7 +28,7 @@ Given(/^the Chef Server has an environment named "(.*?)"$/) do |name|
 end
 
 Given(/^the Chef Server does not have an environment named "(.*?)"$/) do |name|
-  if chef_server.data_store.exists?(["organizations", "chef", "environments", name])
+  if chef_server.data_store.exist?(["organizations", "chef", "environments", name])
     chef_server.data_store.delete(["organizations", "chef", "environments", name])
   end
 end
