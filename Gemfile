@@ -10,8 +10,9 @@ gem "syslog"
 
 group :development do
   gem "debug"
-  gem "aruba",         "~> 2.2"
+  gem "aruba",         "~> 2.3"
   gem "cucumber",      ">= 9.2", "< 10"
+  gem "cucumber-cucumber-expressions", "~> 17.1"
   gem "chef-zero",     ">= 4.0"
   gem "dep_selector",  ">= 1.0"
   gem "fuubar",        ">= 2.0"
