@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 group :build do
-  gem 'rake', '>= 12.3.3', '< 14.0'
+  gem "rake", ">= 10.1"
 end
 
 gem "syslog"
