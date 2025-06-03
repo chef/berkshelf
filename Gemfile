@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 group :build do
-  gem "rake",          ">= 10.1"
+  gem "rake", ">= 10.1"
 end
 
 gem "syslog"
@@ -24,7 +24,6 @@ group :development do
 end
 
 gem "appbundler"
-
 
 instance_eval(ENV["GEMFILE_MOD"]) if ENV["GEMFILE_MOD"]
 

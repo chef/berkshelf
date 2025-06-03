@@ -1,4 +1,4 @@
-require 'chef/version_class'
+require "chef/version_class"
 
 module Berkshelf
   module Validator
@@ -36,7 +36,7 @@ module Berkshelf
       def validate_versions(cookbook)
         cookbook_dependencies = cookbook.dependencies
         cookbook_dependencies.each do |cookbook_name, cookbook_version|
-          version = cookbook_version.gsub(/[^\d,\.]/, '')
+          version = cookbook_version.gsub(/[^\d,\.]/, "")
           Chef::Version.new(version)
         end
       end

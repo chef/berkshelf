@@ -35,9 +35,9 @@ Gem::Specification.new do |s|
 
   ruby_version = Gem::Version.new(RUBY_VERSION)
 
-  s.add_dependency "mixlib-shellout",      ">= 2.0", "< 4.0"
+  s.add_dependency "mixlib-shellout", ">= 2.0", "< 4.0"
 
-  s.add_dependency "chef-cleanroom",            "~> 1.0"
+  s.add_dependency "chef-cleanroom", "~> 1.0"
 
   if ruby_version >= Gem::Version.new("3.1.0")
     s.add_dependency "minitar",              "~> 1.0"
