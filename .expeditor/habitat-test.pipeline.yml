@@ -31,6 +31,7 @@ steps:
           image: rubydistros/windows-2019:3.4
           user: 'NT AUTHORITY\SYSTEM'
           environment:
+            - HAB_AUTH_TOKEN
             - FORCE_FFI_YAJL=ext
             - EXPIRE_CACHE=true
             - CHEF_LICENSE=accept-no-persist
