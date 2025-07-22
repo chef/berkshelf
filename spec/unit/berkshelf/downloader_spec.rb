@@ -117,7 +117,7 @@ module Berkshelf
             client_key: "client-key",
             chef_server_url: chef_server_url,
             validation_client_name: "validator",
-            validation_key: File.expand_path("spec/config/validator.pem"),
+            validation_key: "validator.pem",
             artifactory_api_key: "secret",
             cookbook_copyright: "user",
             cookbook_email: "user@example.com",
@@ -130,8 +130,6 @@ module Berkshelf
             ssl:  double(verify: true),
             chef: chef_config)
         end
-
-        let(:validator_key_path) { File.expand_path("spec/config/validator.pem") }
 
         before do
           allow(Berkshelf).to receive(:config).and_return(berkshelf_config)

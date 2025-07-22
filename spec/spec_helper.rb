@@ -1,3 +1,5 @@
+require_relative "support/test_keys"
+
 def windows?
   !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
 end
