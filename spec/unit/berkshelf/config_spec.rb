@@ -13,12 +13,13 @@ describe Berkshelf::Config do
     end
 
     context "a Chef config to read defaults from" do
+      let(:validator_key_path) { File.expand_path("spec/config/validator.pem") }
       let(:chef_config) do
         double(
           Berkshelf::ChefConfigCompat,
           chef_server_url: "https://chef.example.com",
           validation_client_name: "validator",
-          validation_key: "validator.pem",
+          validation_key: validator_key_path,
           client_key: "client-key",
           node_name: "fake-client",
           trusted_certs_dir: "/tmp/fakecerts",

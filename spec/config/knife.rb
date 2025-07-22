@@ -8,3 +8,11 @@ chef_server_url          "http://127.0.0.1:26310"
 cache_type               "BasicFile"
 cache_options( path: "#{ENV["HOME"]}/.chef/checksums" )
 cookbook_path []
+
+require_relative 'key_generator'
+
+# Generate berkshelf.pem if it does not exist
+KeyGenerator.generate_key('spec/config/berkshelf.pem')
+
+# Generate validator.pem if it does not exist
+KeyGenerator.generate_key('spec/config/validator.pem')

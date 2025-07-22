@@ -4,6 +4,7 @@ describe Berkshelf::SSLPolicy do
   let(:self_signed_crt_path) { File.join(BERKS_SPEC_DATA, "trusted_certs") }
   let(:self_signed_crt_path_windows_backslashes) { "C:/users/vagrant\\.chef\\trusted_certs" }
   let(:self_signed_crt_path_windows_forwardslashes) { "C:/users/vagrant/.chef/trusted_certs" }
+  let(:validator_key_path) { File.expand_path("spec/config/validator.pem") }
 
   let(:chef_config) do
     double(Berkshelf::ChefConfigCompat,
@@ -11,7 +12,7 @@ describe Berkshelf::SSLPolicy do
       client_key: "client-key",
       chef_server_url: "http://configured-chef-server/",
       validation_client_name: "validator",
-      validation_key: "validator.pem",
+      validation_key: validator_key_path,
       artifactory_api_key: "secret",
       cookbook_copyright: "user",
       cookbook_email: "user@example.com",

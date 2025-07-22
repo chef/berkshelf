@@ -55,7 +55,7 @@ Gem::Specification.new do |s|
   s.add_dependency "retryable",            ">= 2.0", "< 4.0"
   s.add_dependency "solve",                "~> 4.0"
 
-  s.add_dependency "thor",                 ">= 0.20", "< 1.3.0"
+  s.add_dependency "thor",                 "~> 1.4"
   s.add_dependency "octokit",              ">= 4.0", "< 6.0"
 
   s.add_dependency "mixlib-archive",       ">= 1.1.4", "< 2.0" # needed for ruby 3.0 / Dir.chdir removal
