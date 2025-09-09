@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
 
   if ruby_version >= Gem::Version.new("3.1.0")
     s.add_dependency "minitar",              "~> 1.0"
-    s.add_dependency "chef",                 ">= 18.0.0"
+    s.add_dependency "chef",                 "=18.7.10"
   else
     s.add_dependency "minitar",              "~> 0.12"
 
