@@ -12,13 +12,15 @@ group :development do
   gem "cucumber",      ">= 9.2", "< 10"
   gem "cucumber-cucumber-expressions", "~> 17.1"
   gem "chef-zero",     ">= 4.0"
-  gem "dep_selector",  ">= 1.0"
   gem "fuubar",        ">= 2.0"
   gem "rspec",         ">= 3.0"
   gem "rspec-its",     ">= 1.2"
   gem "webmock",       ">= 1.11"
   gem "http",          ">= 0.9.8"
   gem "chefstyle"
+  if Gem::Version.new(RUBY_VERSION) <= Gem::Version.new("3.1.0")
+    gem "dep_selector", ">= 1.0"
+  end
 end
 
 gem "appbundler"
