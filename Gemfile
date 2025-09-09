@@ -6,8 +6,6 @@ group :build do
   gem "rake", ">= 10.1"
 end
 
-gem "syslog"
-
 group :development do
   gem "debug"
   gem "aruba",         "~> 2.3"
