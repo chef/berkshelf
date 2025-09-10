@@ -29,6 +29,10 @@ steps:
     - rm -f .bundle/config
     - apt-get update -y
     - apt-get install -y graphviz
+    # Add legacy C++ flags to work around Gecode build issues
+    - export CXXFLAGS="-std=gnu++98 -Wno-error=terminate -Wno-error=deprecated-copy"
+    - export CPPFLAGS="$CXXFLAGS"
+    - export CFLAGS="$CXXFLAGS"
     - bundle config set --local path 'vendor/bundle'
     - bundle install --jobs=3 --retry=3
     - bundle exec rake
