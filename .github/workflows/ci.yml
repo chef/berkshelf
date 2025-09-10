@@ -31,9 +31,8 @@ jobs:
              # For Ruby 3.1 on standard Ubuntu runner
              sudo apt-get update && sudo apt-get install -y graphviz libarchive-dev
            elif [ "${{ matrix.ruby }}" == "3.4" ]; then
-             # For Ruby 3.4 in custom container with old toolchains, skip dependency installation
-             # Dependencies should already be available in the custom image
-             echo "Using custom Ruby 3.4 image with pre-installed dependencies"
+             # For Ruby 3.4 in custom container, install without sudo
+             apt-get update && apt-get install -y graphviz libarchive-dev
            fi
          elif [ "$RUNNER_OS" == "Windows" ]; then
            choco install graphviz
