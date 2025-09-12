@@ -67,9 +67,6 @@ Gem::Specification.new do |s|
   # this is required for Mixlib::Config#from_json
   s.add_dependency "mixlib-config", ">= 2.2.5"
 
-  # This gem was removed from the Ruby standard library starting with version 3.4
-  # See: https://stdgems.org/new-in/3.4
-  if Gem::Version.new(RUBY_VERSION) >= Gem::Version.new("3.4")
-    s.add_dependency "syslog", "~> 0.3"
-  end
+  # syslog was removed from Ruby's standard library in 3.4; see https://stdgems.org/new-in/3.4
+  s.add_dependency "syslog", "~> 0.3"
 end
