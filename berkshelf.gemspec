@@ -66,7 +66,5 @@ Gem::Specification.new do |s|
   s.add_dependency "chef-config"
   # this is required for Mixlib::Config#from_json
   s.add_dependency "mixlib-config", ">= 2.2.5"
-
-  # syslog was removed from Ruby's standard library in 3.4; see https://stdgems.org/new-in/3.4
   s.add_dependency "syslog", "~> 0.3"
 end
