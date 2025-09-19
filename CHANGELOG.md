@@ -1,19 +1,17 @@
-<!-- latest_release 8.1.6 -->
-## [v8.1.6](https://github.com/chef/berkshelf/tree/v8.1.6) (2025-09-17)
-
-#### Merged Pull Requests
-- Remove Ruby version conditional logic for syslog from gemspec [#70](https://github.com/chef/berkshelf/pull/70) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=8.1.4 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Remove Ruby version conditional logic for syslog from gemspec [#70](https://github.com/chef/berkshelf/pull/70) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.6 -->
-- Move syslog dependency from Gemfile to gemspec [#68](https://github.com/chef/berkshelf/pull/68) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.5 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v8.1.6](https://github.com/chef/berkshelf/tree/v8.1.6) (2025-09-19)
+
+#### Merged Pull Requests
+- Move syslog dependency from Gemfile to gemspec [#68](https://github.com/chef/berkshelf/pull/68) ([nikhil2611](https://github.com/nikhil2611))
+- Remove Ruby version conditional logic for syslog from gemspec [#70](https://github.com/chef/berkshelf/pull/70) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_stable_release -->
+
 ## [v8.1.4](https://github.com/chef/berkshelf/tree/v8.1.4) (2025-09-02)
 
 #### Merged Pull Requests
@@ -22,7 +20,6 @@
 - Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#65](https://github.com/chef/berkshelf/pull/65) ([nikhil2611](https://github.com/nikhil2611))
 - Ruby 3.4 update in berkshelf hab package for windows [#66](https://github.com/chef/berkshelf/pull/66) ([nikhil2611](https://github.com/nikhil2611))
 - CHEF-23806 - Security fixes for berkshelf [#67](https://github.com/chef/berkshelf/pull/67) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
 
 ## [v8.0.22](https://github.com/chef/berkshelf/tree/v8.0.22) (2025-05-20)
 
