@@ -76,3 +76,6 @@ Thank you to all of our [Contributors](https://github.com/chef/berkshelf/graphs/
 
 If you'd like to contribute, please see our [contribution guidelines](https://github.com/chef/berkshelf/blob/main/CONTRIBUTING.md) first.
 
+# Copyright
+
+See [COPYRIGHT.md](./COPYRIGHT.md).
