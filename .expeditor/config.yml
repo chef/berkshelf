@@ -80,7 +80,7 @@ subscriptions:
       - built_in:notify_chefio_slack_channels
 
   # Promote to 'current' on successful Habitat build
-  - workload: buildkite_build_passed:{{agent_id}}:habitat/build:*
+  - workload: buildkite_build_passed:{{agent_id}}:habitat/test:*
     actions:
       - built_in:promote_habitat_packages:
           channel: current
