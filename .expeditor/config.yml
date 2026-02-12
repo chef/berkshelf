@@ -26,7 +26,6 @@ release_branches:
 
 artifact_channels:
   - current
-  - stable
   - base-2025
 
 changelog:
@@ -67,6 +66,7 @@ subscriptions:
             - "Expeditor: Skip All"
       - built_in:build_gem:
           only_if: built_in:bump_version
+
       - trigger_pipeline:habitat/build:
           only_if: built_in:bump_version
           ignore_labels:
@@ -77,15 +77,8 @@ subscriptions:
   - workload: project_promoted:{{agent_id}}:*
     actions:
       - built_in:rollover_changelog
-      - built_in:notify_chefio_slack_channels
-
-  # Promote to 'current' on successful Habitat testing
-  - workload: buildkite_build_passed:{{agent_id}}:habitat/test:*
-    actions:
       - built_in:promote_habitat_packages
       - built_in:publish_rubygems
-
-  # Promote to 'base-2025' after promoting to 'stable'
-  - workload: hab_package_published:stable:berkshelf/8.*
-    actions:
-      - bash:.expeditor/scripts/base-2025-promote.sh
+      - built_in:notify_chefio_slack_channels
+      
+  
