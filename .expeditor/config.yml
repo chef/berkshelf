@@ -80,5 +80,3 @@ subscriptions:
       - built_in:promote_habitat_packages
       - built_in:publish_rubygems
       - built_in:notify_chefio_slack_channels
-      
-  
