@@ -73,8 +73,8 @@ subscriptions:
             - "Expeditor: Skip Habitat"
             - "Expeditor: Skip All"
 
-  # Creates current package from unstable package once hab build is complete
-  - workload: artifact_published:unstable:chef/berkshelf/8.*
+  # Promotes from unstable to current hab bldr
+  - workload: buildkite_hab_build_group_published:{{agent_id}}:*
     action:
      - build_in_promote_habitat_packages
 
