@@ -1,14 +1,15 @@
-<!-- latest_release 8.1.7 -->
-## [v8.1.7](https://github.com/chef/berkshelf/tree/v8.1.7) (2026-02-14)
+<!-- latest_release 8.1.8 -->
+## [v8.1.8](https://github.com/chef/berkshelf/tree/v8.1.8) (2026-02-16)
 
 #### Merged Pull Requests
-- Enhance expeditor workflow - promote [#79](https://github.com/chef/berkshelf/pull/79) ([poorndm](https://github.com/poorndm))
+- Fix Promote - current to base-2025 [#80](https://github.com/chef/berkshelf/pull/80) ([poorndm](https://github.com/poorndm))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Fix Promote - current to base-2025 [#80](https://github.com/chef/berkshelf/pull/80) ([poorndm](https://github.com/poorndm)) <!-- 8.1.8 -->
 - Enhance expeditor workflow - promote [#79](https://github.com/chef/berkshelf/pull/79) ([poorndm](https://github.com/poorndm)) <!-- 8.1.7 -->
 <!-- release_rollup -->
 
