@@ -74,7 +74,7 @@ subscriptions:
             - "Expeditor: Skip All"
 
   # Creates current package from unstable package once hab build is complete
-  - workload: artifact_published:unstable:berkshelf:{{version_constraint}}
+  - workload: artifact_published:unstable:chef/berkshelf/8.*
     action:
      - build_in_promote_habitat_packages
 
