@@ -75,7 +75,7 @@ subscriptions:
 
   # Promotes from unstable to current hab bldr
   - workload: buildkite_hab_build_group_published:{{agent_id}}:*
-    action:
+    actions:
      - built_in:promote_habitat_packages
 
   # Promoting current to base-2025 channel
