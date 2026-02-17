@@ -1,14 +1,15 @@
-<!-- latest_release 8.1.11 -->
-## [v8.1.11](https://github.com/chef/berkshelf/tree/v8.1.11) (2026-02-16)
+<!-- latest_release 8.1.12 -->
+## [v8.1.12](https://github.com/chef/berkshelf/tree/v8.1.12) (2026-02-17)
 
 #### Merged Pull Requests
-- updating config to ensure we prmote on the buildkite action, not the … [#83](https://github.com/chef/berkshelf/pull/83) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
+- updating config to  promote  [#84](https://github.com/chef/berkshelf/pull/84) ([poorndm](https://github.com/poorndm))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- updating config to  promote  [#84](https://github.com/chef/berkshelf/pull/84) ([poorndm](https://github.com/poorndm)) <!-- 8.1.12 -->
 - updating config to ensure we prmote on the buildkite action, not the … [#83](https://github.com/chef/berkshelf/pull/83) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 8.1.11 -->
 - updating config to ensure we prmote on the buildkite action, not the … [#82](https://github.com/chef/berkshelf/pull/82) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 8.1.10 -->
 - Fix promote path  [#81](https://github.com/chef/berkshelf/pull/81) ([poorndm](https://github.com/poorndm)) <!-- 8.1.9 -->
