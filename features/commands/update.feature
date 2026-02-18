@@ -115,7 +115,7 @@ Feature: berks update
       DEPENDENCIES
         berkshelf-cookbook-fixture
           git: https://github.com/chef/berkshelf-cookbook-fixture
-          revision: a97b9447cbd41a5fe58eee2026e48ccb503bd3bc
+          revision: eb7491b7dfcccc3236c86b23569e54d0c9f448eb
 
       GRAPH
         berkshelf-cookbook-fixture (1.0.0)
