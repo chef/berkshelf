@@ -8,7 +8,7 @@ Feature: Creating and reading the Berkshelf lockfile
     * the cookbook store has the git cookbooks:
       | berkshelf-cookbook-fixture | 0.2.0 | 70a527e17d91f01f031204562460ad1c17f972ee |
       | berkshelf-cookbook-fixture | 1.0.0 | 919afa0c402089df23ebdf36637f12271b8a96b4 |
-      | berkshelf-cookbook-fixture | 1.0.0 | a97b9447cbd41a5fe58eee2026e48ccb503bd3bc |
+      | berkshelf-cookbook-fixture | 1.0.0 | eb7491b7dfcccc3236c86b23569e54d0c9f448eb |
       | berkshelf-cookbook-fixture | 1.0.0 | 93f5768b7d14df45e10d16c8bf6fe98ba3ff809a |
 
   Scenario: Writing the Berksfile.lock
@@ -195,7 +195,7 @@ Feature: Creating and reading the Berkshelf lockfile
       DEPENDENCIES
         berkshelf-cookbook-fixture
           git: https://github.com/chef/berkshelf-cookbook-fixture.git
-          revision: a97b9447cbd41a5fe58eee2026e48ccb503bd3bc
+          revision: eb7491b7dfcccc3236c86b23569e54d0c9f448eb
           branch: master
 
       GRAPH

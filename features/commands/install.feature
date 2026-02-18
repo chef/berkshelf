@@ -192,7 +192,7 @@ Feature: berks install
       """
     When I successfully run `berks install`
     Then the cookbook store should have the git cookbooks:
-      | berkshelf-cookbook-fixture | 1.0.0 | a97b9447cbd41a5fe58eee2026e48ccb503bd3bc |
+      | berkshelf-cookbook-fixture | 1.0.0 | eb7491b7dfcccc3236c86b23569e54d0c9f448eb |
     And the output should contain:
       """
       Fetching 'berkshelf-cookbook-fixture' from https://github.com/chef/berkshelf-cookbook-fixture.git (at master)
@@ -206,7 +206,7 @@ Feature: berks install
       cookbook "berkshelf-cookbook-fixture", git: "https://github.com/chef/berkshelf-cookbook-fixture.git"
       """
     And the cookbook store has the git cookbooks:
-      | berkshelf-cookbook-fixture | 1.0.0 | a97b9447cbd41a5fe58eee2026e48ccb503bd3bc |
+      | berkshelf-cookbook-fixture | 1.0.0 | eb7491b7dfcccc3236c86b23569e54d0c9f448eb |
     When I successfully run `berks install`
     Then the output should contain:
       """
