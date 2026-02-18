@@ -14,6 +14,7 @@ $pkg_deps=@(
 
 $pkg_build_deps=@(
   "core/git"
+  "core/libffi"
 )
 
 $pkg_bin_dirs=@("bin"
