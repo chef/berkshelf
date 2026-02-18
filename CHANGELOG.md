@@ -1,14 +1,15 @@
-<!-- latest_release 8.1.12 -->
-## [v8.1.12](https://github.com/chef/berkshelf/tree/v8.1.12) (2026-02-17)
+<!-- latest_release 8.1.13 -->
+## [v8.1.13](https://github.com/chef/berkshelf/tree/v8.1.13) (2026-02-18)
 
 #### Merged Pull Requests
-- updating config to  promote  [#84](https://github.com/chef/berkshelf/pull/84) ([poorndm](https://github.com/poorndm))
+- Fix for berkshelf gem test in chef/chef [#88](https://github.com/chef/berkshelf/pull/88) ([tpowell-progress](https://github.com/tpowell-progress))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Fix for berkshelf gem test in chef/chef [#88](https://github.com/chef/berkshelf/pull/88) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.1.13 -->
 - updating config to  promote  [#84](https://github.com/chef/berkshelf/pull/84) ([poorndm](https://github.com/poorndm)) <!-- 8.1.12 -->
 - updating config to ensure we prmote on the buildkite action, not the … [#83](https://github.com/chef/berkshelf/pull/83) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 8.1.11 -->
 - updating config to ensure we prmote on the buildkite action, not the … [#82](https://github.com/chef/berkshelf/pull/82) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 8.1.10 -->
