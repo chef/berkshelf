@@ -36,15 +36,6 @@ do_unpack() {
 }
 
 do_build() {
-
-  # Copy NOTICE.TXT to the package directory
-  if [[ -f "$PLAN_CONTEXT/../NOTICE" ]]; then
-    build_line "Copying NOTICE to package directory"
-    cp "$PLAN_CONTEXT/../NOTICE" "$pkg_prefix/"
-  else
-    build_line "Warning: NOTICE not found at $PLAN_CONTEXT/../NOTICE"
-  fi
-
   export GEM_HOME="$pkg_prefix/vendor"
 
   build_line "Setting GEM_PATH=$GEM_HOME"
@@ -62,6 +53,15 @@ do_build() {
 }
 
 do_install() {
+
+  # Copy NOTICE to the package directory
+  if [[ -f "$PLAN_CONTEXT/../NOTICE" ]]; then
+    build_line "Copying NOTICE to package directory"
+    cp "$PLAN_CONTEXT/../NOTICE" "$pkg_prefix/"
+  else
+    build_line "Warning: NOTICE not found at $PLAN_CONTEXT/../NOTICE"
+  fi
+
   export GEM_HOME="$pkg_prefix/vendor"
 
   build_line "Setting GEM_PATH=$GEM_HOME"
@@ -69,6 +69,7 @@ do_install() {
   gem install berkshelf-*.gem --no-document
   wrap_ruby_berkshelf
   set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor"
+
 }
 
 wrap_ruby_berkshelf() {
