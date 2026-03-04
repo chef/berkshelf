@@ -1,14 +1,15 @@
-<!-- latest_release 8.1.13 -->
-## [v8.1.13](https://github.com/chef/berkshelf/tree/v8.1.13) (2026-02-18)
+<!-- latest_release unreleased -->
+## Unreleased
 
 #### Merged Pull Requests
-- Fix for berkshelf gem test in chef/chef [#88](https://github.com/chef/berkshelf/pull/88) ([tpowell-progress](https://github.com/tpowell-progress))
+- bump version for blackduck scan [#87](https://github.com/chef/berkshelf/pull/87) ([Vasu1105](https://github.com/Vasu1105))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- bump version for blackduck scan [#87](https://github.com/chef/berkshelf/pull/87) ([Vasu1105](https://github.com/Vasu1105)) <!-- 8.1.13 -->
 - Fix for berkshelf gem test in chef/chef [#88](https://github.com/chef/berkshelf/pull/88) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.1.13 -->
 - updating config to  promote  [#84](https://github.com/chef/berkshelf/pull/84) ([poorndm](https://github.com/poorndm)) <!-- 8.1.12 -->
 - updating config to ensure we prmote on the buildkite action, not the … [#83](https://github.com/chef/berkshelf/pull/83) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 8.1.11 -->
