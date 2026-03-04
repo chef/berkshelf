@@ -7,9 +7,9 @@ name: CI Pull Request on Main Branch
 
 on: 
   pull_request:
-    branches: [ vj/bump-version-for-blackduck, release/** ]
+    branches: [ main, release/** ]
   push:
-    branches: [ vj/bump-version-for-blackduck, release/** ]
+    branches: [ main, release/** ]
 
   workflow_dispatch:
 
