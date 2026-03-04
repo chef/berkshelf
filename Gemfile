@@ -7,7 +7,7 @@ gemspec
 # version. Chef 19+ is pure-ruby only, so force_ruby_platform: true makes Bundler
 # ignore all platform-specific variants. The '>= 19.0' lower bound is required
 # because without it Bundler still resolves chef 18.3.0 (the pure-ruby build).
-gem "chef", ">= 18.0", force_ruby_platform: true
+gem "chef", ">= 18.0",  platforms: [:ruby]
 
 group :build do
   gem "rake", ">= 10.1"
