@@ -1,0 +1,3 @@
+Gemfile @chef/chef-infra-owners
+Gemfile.lock @chef/chef-infra-owners
+*.gemspec @chef/chef-infra-owners
