@@ -79,6 +79,7 @@ function Invoke-Install {
 }
 
 function Invoke-After {
+    Sleep 20s
     # We don't need the cache of downloaded .gem files ...
     Remove-Item $pkg_prefix/vendor/cache -Recurse -Force
     # We don't need the gem docs.

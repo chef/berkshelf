@@ -65,6 +65,10 @@ Write-Host "--- Generating fake origin key"
 hab origin key generate $env:HAB_ORIGIN
 
 Write-Host "--- Building $Plan"
+Write-Host "******************************************************************"
+Write-Host "** What is My Project Root as determined by git rev? $(git rev-parse --show-toplevel)"
+Write-Host "** What is my Project Root as determined by $project_root **"
+Write-Host "******************************************************************"
 $project_root = "$(git rev-parse --show-toplevel)"
 Set-Location $project_root
 
