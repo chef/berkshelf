@@ -7,8 +7,7 @@ gemspec
 # version. Chef 19+ is pure-ruby only, so force_ruby_platform: true makes Bundler
 # ignore all platform-specific variants. The '>= 19.0' lower bound is required
 # because without it Bundler still resolves chef 18.3.0 (the pure-ruby build).
-# gem "chef", ">= 18.0", platforms: [:ruby] unless ENV["GEMFILE_MOD"]
-gem "chef", ">= 18.0", force_ruby_platform: true unless ENV["GEMFILE_MOD"]
+gem "chef", ">= 18.0", platforms: [:ruby] unless ENV["GEMFILE_MOD"]
 
 group :build do
   gem "rake", ">= 10.1"
@@ -20,7 +19,7 @@ group :development do
   gem "cucumber",      ">= 9.2", "< 10"
   gem "cucumber-cucumber-expressions", "~> 17.1"
   gem "chef-zero",     ">= 4.0"
-  # gem "dep_selector",  "~> 1.0.3"  # Temporarily disabled for Windows compatibility
+  gem "dep_selector",  ">= 1.0"
   gem "fuubar",        ">= 2.0"
   gem "rspec",         ">= 3.0"
   gem "rspec-its",     ">= 1.2"
