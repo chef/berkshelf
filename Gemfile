@@ -19,7 +19,7 @@ group :development do
   gem "cucumber",      ">= 9.2", "< 10"
   gem "cucumber-cucumber-expressions", "~> 17.1"
   gem "chef-zero",     ">= 4.0"
-  # gem "dep_selector",  ">= 1.0" #temporarily disable it
+  gem "dep_selector",  ">= 1.0"
   gem "fuubar",        ">= 2.0"
   gem "rspec",         ">= 3.0"
   gem "rspec-its",     ">= 1.2"
