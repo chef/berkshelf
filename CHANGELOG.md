@@ -1,15 +1,15 @@
-<!-- latest_release 8.1.14 -->
-## [v8.1.14](https://github.com/chef/berkshelf/tree/v8.1.14) (2026-03-04)
+<!-- latest_release 8.1.15 -->
+## [v8.1.15](https://github.com/chef/berkshelf/tree/v8.1.15) (2026-03-06)
 
 #### Merged Pull Requests
-- Chef version version changed to pick latest version [#89](https://github.com/chef/berkshelf/pull/89) ([sanghinitin](https://github.com/sanghinitin))
-- bump version for blackduck scan [#87](https://github.com/chef/berkshelf/pull/87) ([Vasu1105](https://github.com/Vasu1105))
+- conditionally include chef in gemfile [#90](https://github.com/chef/berkshelf/pull/90) ([rishichawda](https://github.com/rishichawda))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- conditionally include chef in gemfile [#90](https://github.com/chef/berkshelf/pull/90) ([rishichawda](https://github.com/rishichawda)) <!-- 8.1.15 -->
 - Chef version version changed to pick latest version [#89](https://github.com/chef/berkshelf/pull/89) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.14 -->
 - bump version for blackduck scan [#87](https://github.com/chef/berkshelf/pull/87) ([Vasu1105](https://github.com/Vasu1105)) <!-- 8.1.13 -->
 - Fix for berkshelf gem test in chef/chef [#88](https://github.com/chef/berkshelf/pull/88) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.1.13 -->
