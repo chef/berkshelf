@@ -47,6 +47,8 @@ jobs:
       with:
         bundler-cache: false
         ruby-version: ${{ matrix.ruby }}
+    - name: Install Ruby gems
+      run: bundle install --jobs 4 --retry 3
     - run: bundle exec rake spec
       if: always()
     - run: bundle exec rake features
