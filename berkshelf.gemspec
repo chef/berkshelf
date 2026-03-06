@@ -52,6 +52,11 @@ Gem::Specification.new do |s|
     end
   end
 
+  if Gem::Platform.local.os =~ /mswin|mingw|univesal|mingw-ucrt/
+    s.add_dependency "chef-powershell", "~> 18.6.0"
+    s.add_dependency "win32-api", "~> 1.10.0"
+  end
+
   s.add_dependency "retryable",            ">= 2.0", "< 4.0"
   s.add_dependency "solve",                "~> 4.0"
 
