@@ -79,6 +79,10 @@ function Invoke-Install {
 }
 
 function Invoke-After {
+    Write-Host "******************************************************************"
+    Write-Host "** What is My Project Root as determined by pkg_prefix? $pkg_prefix"
+    Write-Host "******************************************************************"
+    Sleep 20s
     # We don't need the cache of downloaded .gem files ...
     Remove-Item $pkg_prefix/vendor/cache -Recurse -Force
     # We don't need the gem docs.
