@@ -1,14 +1,15 @@
-<!-- latest_release 8.1.17 -->
-## [v8.1.17](https://github.com/chef/berkshelf/tree/v8.1.17) (2026-03-11)
+<!-- latest_release 8.1.18 -->
+## [v8.1.18](https://github.com/chef/berkshelf/tree/v8.1.18) (2026-03-12)
 
 #### Merged Pull Requests
-- Remove base-2025-promote script as its not needed [#94](https://github.com/chef/berkshelf/pull/94) ([nikhil2611](https://github.com/nikhil2611))
+- removed core/git pkg deps in hab and upgrade chef version [#93](https://github.com/chef/berkshelf/pull/93) ([sanghinitin](https://github.com/sanghinitin))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- removed core/git pkg deps in hab and upgrade chef version [#93](https://github.com/chef/berkshelf/pull/93) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.18 -->
 - Remove base-2025-promote script as its not needed [#94](https://github.com/chef/berkshelf/pull/94) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.17 -->
 - Add chef-infra-client to CODEOWNERS for Gemfile* and gemspec [#91](https://github.com/chef/berkshelf/pull/91) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.1.16 -->
 - conditionally include chef in gemfile [#90](https://github.com/chef/berkshelf/pull/90) ([rishichawda](https://github.com/rishichawda)) <!-- 8.1.15 -->
