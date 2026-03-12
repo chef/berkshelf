@@ -10,6 +10,8 @@ $pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 
 $pkg_deps=@(
   "core/ruby3_4-plus-devkit"
+)
+$pkg_build_deps=@(
   "core/git"
 )
 $pkg_bin_dirs=@("bin"
@@ -38,7 +40,22 @@ function Invoke-Build {
         $env:Path += ";c:\\Program Files\\Git\\bin"
         Push-Location $project_root
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
+        # enable ridk for native gem build 
 
+        $rubyPkgPath = & hab pkg path core/ruby3_4-plus-devkit
+        $ridkPath = Join-Path $rubyPkgPath "bin\ridk.ps1"
+        & $ridkPath enable
+        $msys2Root = Join-Path $rubyPkgPath "msys64"
+        $tmpDir = Join-Path $msys2Root "tmp"
+        if (-not (Test-Path $tmpDir)) {
+            New-Item -ItemType Directory -Path $tmpDir -Force | Out-Null
+        }
+
+        # Install libffi and autotools so ffi gem can compile from source on Ruby 3.4
+        Write-BuildLine " ** Installing MSYS2 packages for native gem compilation"
+        ridk exec pacman -S mingw-w64-ucrt-x86_64-libffi  libtool --noconfirm --needed
+
+  
         Write-BuildLine " ** Configuring bundler for this build environment"
         bundle config --local without integration deploy maintenance
         bundle config --local jobs 4
@@ -58,6 +75,10 @@ function Invoke-Build {
 }
 
 function Invoke-Install {
+    # enable ridk for native gem build 
+    $rubyPkgPath = & hab pkg path core/ruby3_4-plus-devkit
+    $ridkPath = Join-Path $rubyPkgPath "bin\ridk.ps1"
+    & $ridkPath enable
     Write-BuildLine "** Copy built & cached gems to install directory"
     Copy-Item -Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/*" -Destination $pkg_prefix -Recurse -Force -Exclude @("gem_make.out", "mkmf.log", "Makefile",
                      "*/latest", "latest",
