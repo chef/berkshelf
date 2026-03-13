@@ -8,6 +8,10 @@ export HAB_LICENSE="accept-no-persist"
 export HAB_BLDR_CHANNEL="base-2025"
 export HAB_REFRESH_CHANNEL="base-2025"
 
+echo "--- Ensuring bundler 2.3.3 is installed"
+gem install bundler -v 2.3.3 --force
+bundle --version
+
 echo "--- checking if git is installed"
 if ! command -v git &> /dev/null; then
     echo "Git is not installed. Installing Git..."

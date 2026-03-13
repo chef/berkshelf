@@ -12,6 +12,10 @@ $env:HAB_LICENSE = 'accept-no-persist'
 $HabitatVersion = if ($env:HAB_VERSION) { $env:HAB_VERSION } else { '1.6.1245' }
 $Plan = 'berkshelf'
 
+Write-Host "--- Ensuring bundler 2.3.3 is installed"
+gem install bundler -v 2.3.3 --force
+bundle --version
+
 Write-Host "--- system details"
 $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'
 Get-CimInstance Win32_OperatingSystem | Select-Object $Properties | Format-Table -AutoSize

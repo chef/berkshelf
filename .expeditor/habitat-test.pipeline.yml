@@ -11,8 +11,6 @@ steps:
 
   - label: ":linux: Validate Habitat Builds of Berkshelf"
     commands:
-      - gem install bundler -v 2.3.3 --force
-      - bundle --version
       - .expeditor/buildkite/artifact.habitat.test.sh
     expeditor:
       executor:
@@ -25,8 +23,6 @@ steps:
 
   - label: ":windows: Validate Habitat Builds of Berkshelf"
     commands:
-      - gem install bundler -v 2.3.3 --force
-      - bundle --version
       - .expeditor/buildkite/artifact.habitat.test.ps1
     expeditor:
       executor:
