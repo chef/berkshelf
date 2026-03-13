@@ -11,8 +11,7 @@ steps:
 
   - label: ":linux: Validate Habitat Builds of Berkshelf"
     commands:
-      - gem uninstall bundler -a -I -x --force || true
-      - gem install bundler:2.3.3
+      - gem update bundler -v 2.3.3 --force
       - bundle --version
       - .expeditor/buildkite/artifact.habitat.test.sh
     expeditor:
@@ -22,10 +21,12 @@ steps:
           privileged: true
           environment:
             - HAB_AUTH_TOKEN
+            - BUNDLE_VERSION=2.3.3
 
   - label: ":windows: Validate Habitat Builds of Berkshelf"
     commands:
-      - gem uninstall bundler -a -I -x --force; gem install bundler:2.3.3; bundle --version
+      - gem update bundler -v 2.3.3 --force
+      - bundle --version
       - .expeditor/buildkite/artifact.habitat.test.ps1
     expeditor:
       executor:
@@ -39,4 +40,5 @@ steps:
             - FORCE_FFI_YAJL=ext
             - EXPIRE_CACHE=true
             - CHEF_LICENSE=accept-no-persist
+            - BUNDLE_VERSION=2.3.3
             - CHEF_LICENSE_SERVER=http://hosted-license-service-lb-8000-606952349.us-west-2.elb.amazonaws.com:8000/
