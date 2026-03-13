@@ -39,6 +39,9 @@ function Invoke-Build {
         Push-Location $project_root
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
 
+        Write-BuildLine " ** Installing bundler 2.3.3"
+        gem install bundler -v 2.3.3 --force --no-document
+
         Write-BuildLine " ** Configuring bundler for this build environment"
         bundle _2.3.3_ config --local without integration deploy maintenance
         bundle _2.3.3_ config --local jobs 4

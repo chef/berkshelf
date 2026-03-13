@@ -41,6 +41,10 @@ do_build() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
+  
+  build_line "Installing bundler 2.3.3"
+  gem install bundler -v 2.3.3 --force --no-document
+  
   bundle _2.3.3_ config --local without integration deploy maintenance
   bundle _2.3.3_ config --local jobs 4
   bundle _2.3.3_ config --local retry 5
