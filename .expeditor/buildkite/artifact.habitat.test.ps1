@@ -14,9 +14,7 @@ $Plan = 'berkshelf'
 
 Write-Host "--- Ensuring bundler 2.3.3 is installed"
 gem install bundler -v 2.3.3 --force
-gem uninstall -aIx bundler 2>$null -ErrorAction SilentlyContinue
-gem install bundler -v 2.3.3 --force
-bundle --version
+bundle _2.3.3_ --version
 
 Write-Host "--- system details"
 $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'
