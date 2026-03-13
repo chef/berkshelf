@@ -16,6 +16,9 @@ Write-Host "--- system details"
 $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'
 Get-CimInstance Win32_OperatingSystem | Select-Object $Properties | Format-Table -AutoSize
 
+Write-Host "--- bundler version (build environment)"
+bundle --version
+
 Write-Host "--- Installing the version of Habitat required"
 
 function Stop-HabProcess {
@@ -95,6 +98,9 @@ $env:DO_CHECK=$true; hab pkg build .
 
 Write-Host "--- Installing $pkg_ident/$pkg_artifact"
 hab pkg install -b $project_root/results/$pkg_artifact
+
+Write-Host "--- bundler version (habitat package environment)"
+bundle --version
 
 Write-Host "+++ Testing $Plan"
 
