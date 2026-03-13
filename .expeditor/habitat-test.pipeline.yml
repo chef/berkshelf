@@ -11,7 +11,7 @@ steps:
 
   - label: ":linux: Validate Habitat Builds of Berkshelf"
     commands:
-      - gem install bundler:2.3.3
+      - gem install bundler:2.3.3 && gem uninstall bundler -v '>2.3.3' -a --force
       - .expeditor/buildkite/artifact.habitat.test.sh
     expeditor:
       executor:
@@ -23,7 +23,7 @@ steps:
 
   - label: ":windows: Validate Habitat Builds of Berkshelf"
     commands:
-      - gem install bundler:2.3.3
+      - gem install bundler:2.3.3; gem uninstall bundler -v '>2.3.3' -a --force
       - .expeditor/buildkite/artifact.habitat.test.ps1
     expeditor:
       executor:
