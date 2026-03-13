@@ -31,7 +31,7 @@ echo "--- ruby version"
 ruby -v
 
 echo "--- bundler version (build environment)"
-bundle --version
+bundle _2.3.3_ --version
 
 export project_root="$(git rev-parse --show-toplevel)"
 echo "The value for project_root is: $project_root"
@@ -79,7 +79,7 @@ export PATH
 echo "PATH is $PATH"
 
 echo "--- bundler version (habitat package environment)"
-bundle --version
+bundle _2.3.3_ --version
 
 echo "--- :mag_right: Testing $PLAN"
 ${project_root}/habitat/tests/test.sh "$pkg_ident" || error 'failures during test of executables'

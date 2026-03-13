@@ -10,8 +10,6 @@ $pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 
 $pkg_deps=@(
   "core/ruby3_4-plus-devkit"
-)
-$pkg_build_deps=@(
   "core/git"
 )
 $pkg_bin_dirs=@("bin"
@@ -40,29 +38,14 @@ function Invoke-Build {
         $env:Path += ";c:\\Program Files\\Git\\bin"
         Push-Location $project_root
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
-        # enable ridk for native gem build 
 
-        $rubyPkgPath = & hab pkg path core/ruby3_4-plus-devkit
-        $ridkPath = Join-Path $rubyPkgPath "bin\ridk.ps1"
-        & $ridkPath enable
-        $msys2Root = Join-Path $rubyPkgPath "msys64"
-        $tmpDir = Join-Path $msys2Root "tmp"
-        if (-not (Test-Path $tmpDir)) {
-            New-Item -ItemType Directory -Path $tmpDir -Force | Out-Null
-        }
-
-        # Install libffi and autotools so ffi gem can compile from source on Ruby 3.4
-        Write-BuildLine " ** Installing MSYS2 packages for native gem compilation"
-        ridk exec pacman -S mingw-w64-ucrt-x86_64-libffi  libtool --noconfirm --needed
-
-  
         Write-BuildLine " ** Configuring bundler for this build environment"
-        bundle config --local without integration deploy maintenance
-        bundle config --local jobs 4
-        bundle config --local retry 5
-        bundle config --local silence_root_warning 1
+        bundle _2.3.3_ config --local without integration deploy maintenance
+        bundle _2.3.3_ config --local jobs 4
+        bundle _2.3.3_ config --local retry 5
+        bundle _2.3.3_ config --local silence_root_warning 1
         Write-BuildLine " ** Using bundler to retrieve the Ruby dependencies"
-        bundle install --without development
+        bundle _2.3.3_ install --without development
 
         gem build berkshelf.gemspec
 	    Write-BuildLine " ** Using gem to  install"
@@ -75,10 +58,6 @@ function Invoke-Build {
 }
 
 function Invoke-Install {
-    # enable ridk for native gem build 
-    $rubyPkgPath = & hab pkg path core/ruby3_4-plus-devkit
-    $ridkPath = Join-Path $rubyPkgPath "bin\ridk.ps1"
-    & $ridkPath enable
     Write-BuildLine "** Copy built & cached gems to install directory"
     Copy-Item -Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/*" -Destination $pkg_prefix -Recurse -Force -Exclude @("gem_make.out", "mkmf.log", "Makefile",
                      "*/latest", "latest",
@@ -86,7 +65,7 @@ function Invoke-Install {
 
     try {
         Push-Location $pkg_prefix
-        bundle config --local gemfile $project_root/Gemfile
+        bundle _2.3.3_ config --local gemfile $project_root/Gemfile
          Write-BuildLine "** generating binstubs for berkshelf with precise version pins"
 	 Write-BuildLine "** generating binstubs for berkshelf with precise version pins $project_root $pkg_prefix/bin "
             Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin berkshelf"
@@ -100,10 +79,6 @@ function Invoke-Install {
 }
 
 function Invoke-After {
-    Write-Host "******************************************************************"
-    Write-Host "** What is My Project Root as determined by pkg_prefix? $pkg_prefix"
-    Write-Host "******************************************************************"
-    Sleep 20s
     # We don't need the cache of downloaded .gem files ...
     Remove-Item $pkg_prefix/vendor/cache -Recurse -Force
     # We don't need the gem docs.

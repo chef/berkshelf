@@ -21,7 +21,7 @@ $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'
 Get-CimInstance Win32_OperatingSystem | Select-Object $Properties | Format-Table -AutoSize
 
 Write-Host "--- bundler version (build environment)"
-bundle --version
+bundle _2.3.3_ --version
 
 Write-Host "--- Installing the version of Habitat required"
 
@@ -104,7 +104,7 @@ Write-Host "--- Installing $pkg_ident/$pkg_artifact"
 hab pkg install -b $project_root/results/$pkg_artifact
 
 Write-Host "--- bundler version (habitat package environment)"
-bundle --version
+bundle _2.3.3_ --version
 
 Write-Host "+++ Testing $Plan"
 
