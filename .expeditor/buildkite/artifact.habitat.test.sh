@@ -8,10 +8,6 @@ export HAB_LICENSE="accept-no-persist"
 export HAB_BLDR_CHANNEL="base-2025"
 export HAB_REFRESH_CHANNEL="base-2025"
 
-echo "--- Ensuring bundler 2.3.3 is installed"
-gem install bundler -v 2.3.3 --force
-bundle _2.3.3_ --version
-
 echo "--- checking if git is installed"
 if ! command -v git &> /dev/null; then
     echo "Git is not installed. Installing Git..."
@@ -29,9 +25,6 @@ git status
 
 echo "--- ruby version"
 ruby -v
-
-echo "--- bundler version (build environment)"
-bundle _2.3.3_ --version
 
 export project_root="$(git rev-parse --show-toplevel)"
 echo "The value for project_root is: $project_root"
@@ -77,9 +70,6 @@ echo "+++ Testing $PLAN"
 PATH="$(hab pkg path ci/berkshelf)/bin:$PATH"
 export PATH
 echo "PATH is $PATH"
-
-echo "--- bundler version (habitat package environment)"
-bundle _2.3.3_ --version
 
 echo "--- :mag_right: Testing $PLAN"
 ${project_root}/habitat/tests/test.sh "$pkg_ident" || error 'failures during test of executables'

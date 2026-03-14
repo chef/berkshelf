@@ -12,16 +12,9 @@ $env:HAB_LICENSE = 'accept-no-persist'
 $HabitatVersion = if ($env:HAB_VERSION) { $env:HAB_VERSION } else { '1.6.1245' }
 $Plan = 'berkshelf'
 
-Write-Host "--- Ensuring bundler 2.3.3 is installed"
-gem install bundler -v 2.3.3 --force
-bundle _2.3.3_ --version
-
 Write-Host "--- system details"
 $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'
 Get-CimInstance Win32_OperatingSystem | Select-Object $Properties | Format-Table -AutoSize
-
-Write-Host "--- bundler version (build environment)"
-bundle _2.3.3_ --version
 
 Write-Host "--- Installing the version of Habitat required"
 
@@ -102,9 +95,6 @@ $env:DO_CHECK=$true; hab pkg build .
 
 Write-Host "--- Installing $pkg_ident/$pkg_artifact"
 hab pkg install -b $project_root/results/$pkg_artifact
-
-Write-Host "--- bundler version (habitat package environment)"
-bundle _2.3.3_ --version
 
 Write-Host "+++ Testing $Plan"
 
