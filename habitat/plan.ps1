@@ -100,7 +100,6 @@ function Invoke-Install {
 }
 
 function Invoke-After {
-    function Invoke-After {
     Write-Host "******************************************************************"
     Write-Host "** What is My Project Root as determined by pkg_prefix? $pkg_prefix"
     Write-Host "******************************************************************"
