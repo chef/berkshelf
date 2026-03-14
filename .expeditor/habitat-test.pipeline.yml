@@ -19,7 +19,6 @@ steps:
           privileged: true
           environment:
             - HAB_AUTH_TOKEN
-            - BUNDLE_VERSION=2.3.3
 
   - label: ":windows: Validate Habitat Builds of Berkshelf"
     commands:
@@ -36,5 +35,4 @@ steps:
             - FORCE_FFI_YAJL=ext
             - EXPIRE_CACHE=true
             - CHEF_LICENSE=accept-no-persist
-            - BUNDLE_VERSION=2.3.3
             - CHEF_LICENSE_SERVER=http://hosted-license-service-lb-8000-606952349.us-west-2.elb.amazonaws.com:8000/
