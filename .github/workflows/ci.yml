@@ -22,40 +22,31 @@ jobs:
       matrix:
         os: [ubuntu, macos]
         ruby: [3.1, 3.4]
-        include:
-          - os: ubuntu
-            ruby: 3.1
-            container: rubydistros/ubuntu-22.04:3.1
-          - os: ubuntu
-            ruby: 3.4
-            container: rubydistros/ubuntu-24.04:3.4
-    container: ${{ matrix.container || '' }}
+    container: ${{ (matrix.os == 'ubuntu' && matrix.ruby == '3.4') && 'rubydistros/ubuntu-24.04:3.4' || '' }}
     steps:
     - uses: actions/checkout@v2
-    # Install system dependencies for Ubuntu containers
-    - name: Install system dependencies (Ubuntu container)
-      if: ${{ matrix.os == 'ubuntu' }}
-      run: |
-        apt-get update
-        apt-get install -y graphviz libarchive-dev autoconf automake
-    # Install system dependencies for macOS
-    - name: Install system dependencies (macOS)
-      if: ${{ matrix.os == 'macos' }}
-      run: brew install graphviz libarchive
-    # Use ruby/setup-ruby for macOS only (non-container runs)
+    - run: |
+         if [ "$RUNNER_OS" == "Linux" ]; then
+           if [ "${{ matrix.ruby }}" == "3.1" ]; then
+             # For Ruby 3.1 on standard Ubuntu runner
+             sudo apt-get update && sudo apt-get install -y graphviz libarchive-dev
+           elif [ "${{ matrix.ruby }}" == "3.4" ]; then
+             # For Ruby 3.4 in custom container, install without sudo
+             apt-get update && apt-get install -y graphviz libarchive-dev
+           fi
+         elif [ "$RUNNER_OS" == "Windows" ]; then
+           choco install graphviz
+         elif [ "$RUNNER_OS" == "macOS" ]; then
+           brew install graphviz libarchive
+         else
+           echo "$RUNNER_OS not supported"
+           exit 1
+         fi
+      shell: bash
     - uses: ruby/setup-ruby@v1
-      if: ${{ matrix.os == 'macos' }}
       with:
         bundler-cache: true
         ruby-version: ${{ matrix.ruby }}
-    # For container runs (Ubuntu), use bundle install directly (like Buildkite)
-    - name: Bundle install (container)
-      if: ${{ matrix.os == 'ubuntu' }}
-      run: |
-        rm -f .bundle/config
-        rm -rf vendor/bundle
-        bundle config set --local path 'vendor/bundle'
-        bundle install --jobs=3 --retry=3
     - run: bundle exec rake spec
       if: always()
     - run: bundle exec rake features
