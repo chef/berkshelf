@@ -25,7 +25,8 @@ jobs:
     container: ${{ (matrix.os == 'ubuntu' && matrix.ruby == '3.4') && 'rubydistros/ubuntu-24.04:3.4' || '' }}
     steps:
     - uses: actions/checkout@v2
-    - run: |
+    - name: Install system dependencies
+      run: |
          if [ "$RUNNER_OS" == "Linux" ]; then
            if [ "${{ matrix.ruby }}" == "3.1" ]; then
              # For Ruby 3.1 on standard Ubuntu runner
@@ -43,10 +44,19 @@ jobs:
            exit 1
          fi
       shell: bash
+    # Use ruby/setup-ruby for non-container runs only
     - uses: ruby/setup-ruby@v1
+      if: ${{ !(matrix.os == 'ubuntu' && matrix.ruby == '3.4') }}
       with:
         bundler-cache: true
         ruby-version: ${{ matrix.ruby }}
+    # For container runs, use bundle install directly (like Buildkite)
+    - name: Bundle install (container)
+      if: ${{ matrix.os == 'ubuntu' && matrix.ruby == '3.4' }}
+      run: |
+        rm -f .bundle/config
+        bundle config set --local path 'vendor/bundle'
+        bundle install --jobs=3 --retry=3
     - run: bundle exec rake spec
       if: always()
     - run: bundle exec rake features
