@@ -22,19 +22,22 @@ jobs:
       matrix:
         os: [ubuntu, macos]
         ruby: [3.1, 3.4]
-    container: ${{ (matrix.os == 'ubuntu' && matrix.ruby == '3.4') && 'rubydistros/ubuntu-24.04:3.4' || '' }}
+        include:
+          - os: ubuntu
+            ruby: 3.1
+            container: rubydistros/ubuntu-22.04:3.1
+          - os: ubuntu
+            ruby: 3.4
+            container: rubydistros/ubuntu-24.04:3.4
+    container: ${{ matrix.container || '' }}
     steps:
     - uses: actions/checkout@v2
     - name: Install system dependencies
       run: |
          if [ "$RUNNER_OS" == "Linux" ]; then
-           if [ "${{ matrix.ruby }}" == "3.1" ]; then
-             # For Ruby 3.1 on standard Ubuntu runner
-             sudo apt-get update && sudo apt-get install -y graphviz libarchive-dev
-           elif [ "${{ matrix.ruby }}" == "3.4" ]; then
-             # For Ruby 3.4 in custom container, install without sudo
-             apt-get update && apt-get install -y graphviz libarchive-dev
-           fi
+           # For container runs, no sudo needed
+           # autoconf/automake provide config.guess/config.sub needed by dep-selector-libgecode
+           apt-get update && apt-get install -y graphviz libarchive-dev autoconf automake
          elif [ "$RUNNER_OS" == "Windows" ]; then
            choco install graphviz
          elif [ "$RUNNER_OS" == "macOS" ]; then
@@ -44,15 +47,15 @@ jobs:
            exit 1
          fi
       shell: bash
-    # Use ruby/setup-ruby for non-container runs only
+    # Use ruby/setup-ruby for macOS only (non-container runs)
     - uses: ruby/setup-ruby@v1
-      if: ${{ !(matrix.os == 'ubuntu' && matrix.ruby == '3.4') }}
+      if: ${{ matrix.os == 'macos' }}
       with:
         bundler-cache: true
         ruby-version: ${{ matrix.ruby }}
-    # For container runs, use bundle install directly (like Buildkite)
+    # For container runs (Ubuntu), use bundle install directly (like Buildkite)
     - name: Bundle install (container)
-      if: ${{ matrix.os == 'ubuntu' && matrix.ruby == '3.4' }}
+      if: ${{ matrix.os == 'ubuntu' }}
       run: |
         rm -f .bundle/config
         bundle config set --local path 'vendor/bundle'
