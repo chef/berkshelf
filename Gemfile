@@ -2,18 +2,10 @@ source "https://rubygems.org"
 
 gemspec
 
-# The gemspec allows chef >= 18.0, but chef 18.x is published as platform-specific
-# gems (e.g. chef 18.3.0-x64-mingw-ucrt) which Bundler prefers over the pure-ruby
-# version. Chef 19+ is pure-ruby only, so force_ruby_platform: true makes Bundler
-# ignore all platform-specific variants. The '>= 19.0' lower bound is required
-# because without it Bundler still resolves chef 18.3.0 (the pure-ruby build).
-gem "chef", ">= 18.10", platforms: [:ruby] unless ENV["GEMFILE_MOD"]
-
 group :build do
   gem "rake", ">= 10.1"
 end
 
-#the development group is for dependencies required to run tests and other development tasks. These dependencies are not required for the end user of the gem, so they are not included in the gemspec.
 group :development do
   gem "debug"
   gem "aruba",         "~> 2.3"
