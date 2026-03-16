@@ -32,21 +32,16 @@ jobs:
     container: ${{ matrix.container || '' }}
     steps:
     - uses: actions/checkout@v2
-    - name: Install system dependencies
+    # Install system dependencies for Ubuntu containers
+    - name: Install system dependencies (Ubuntu container)
+      if: ${{ matrix.os == 'ubuntu' }}
       run: |
-         if [ "$RUNNER_OS" == "Linux" ]; then
-           # For container runs, no sudo needed
-           # autoconf/automake provide config.guess/config.sub needed by dep-selector-libgecode
-           apt-get update && apt-get install -y graphviz libarchive-dev autoconf automake
-         elif [ "$RUNNER_OS" == "Windows" ]; then
-           choco install graphviz
-         elif [ "$RUNNER_OS" == "macOS" ]; then
-           brew install graphviz libarchive
-         else
-           echo "$RUNNER_OS not supported"
-           exit 1
-         fi
-      shell: bash
+        apt-get update
+        apt-get install -y graphviz libarchive-dev autoconf automake
+    # Install system dependencies for macOS
+    - name: Install system dependencies (macOS)
+      if: ${{ matrix.os == 'macos' }}
+      run: brew install graphviz libarchive
     # Use ruby/setup-ruby for macOS only (non-container runs)
     - uses: ruby/setup-ruby@v1
       if: ${{ matrix.os == 'macos' }}
@@ -58,6 +53,7 @@ jobs:
       if: ${{ matrix.os == 'ubuntu' }}
       run: |
         rm -f .bundle/config
+        rm -rf vendor/bundle
         bundle config set --local path 'vendor/bundle'
         bundle install --jobs=3 --retry=3
     - run: bundle exec rake spec
