@@ -13,12 +13,14 @@ group :build do
   gem "rake", ">= 10.1"
 end
 
+#the development group is for dependencies required to run tests and other development tasks. These dependencies are not required for the end user of the gem, so they are not included in the gemspec.
 group :development do
   gem "debug"
   gem "aruba",         "~> 2.3"
   gem "cucumber",      ">= 9.2", "< 10"
   gem "cucumber-cucumber-expressions", "~> 17.1"
   gem "chef-zero",     ">= 4.0"
+  gem "dep_selector",  ">= 1.0"
   gem "fuubar",        ">= 2.0"
   gem "rspec",         ">= 3.0"
   gem "rspec-its",     ">= 1.2"
