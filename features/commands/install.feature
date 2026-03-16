@@ -612,6 +612,7 @@ Feature: berks install
     Resolving cookbook dependencies...
     """
 
+  @requires_dep_selector
   Scenario: when requiring the :gecode solver engine, no error is raised
   Given I have a Berksfile pointing at the local Berkshelf API with:
     """

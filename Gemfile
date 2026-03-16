@@ -23,7 +23,7 @@ end
 # dep_selector has native extensions that require specific build tools
 # Install with: bundle install --with dep_selector
 group :dep_selector, optional: true do
-  gem "dep_selector",  ">= 1.0"
+  gem "dep_selector", ">= 1.0"
 end
 
 gem "appbundler"

@@ -79,4 +79,13 @@ Before("@slow_process") do
   @aruba_timeout_seconds = Cucumber::JRUBY ? 140 : 60
 end
 
+# Skip scenarios that require the dep_selector gem (optional dependency)
+Before("@requires_dep_selector") do
+  begin
+    require "dep_selector"
+  rescue LoadError
+    skip_this_scenario("dep_selector gem is not installed (optional dependency)")
+  end
+end
+
 require "berkshelf/cli"
