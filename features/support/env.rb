@@ -81,8 +81,8 @@ end
 
 # Skip scenarios that require the dep_selector gem (optional dependency)
 Before("@requires_dep_selector") do
-  require "dep_selector"
-rescue LoadError
+  Gem::Specification.find_by_name("dep_selector")
+rescue Gem::MissingSpecError
   skip_this_scenario("dep_selector gem is not installed (optional dependency)")
 end
 
