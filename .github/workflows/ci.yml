@@ -32,7 +32,8 @@ jobs:
              sudo apt-get update && sudo apt-get install -y graphviz libarchive-dev
            elif [ "${{ matrix.ruby }}" == "3.4" ]; then
              # For Ruby 3.4 in custom container, install without sudo
-             apt-get update && apt-get install -y graphviz libarchive-dev
+             # cmake and build-essential required for dep-selector-libgecode native extensions
+             apt-get update && apt-get install -y graphviz libarchive-dev cmake build-essential
            fi
          elif [ "$RUNNER_OS" == "Windows" ]; then
            choco install graphviz
@@ -47,6 +48,7 @@ jobs:
       with:
         bundler-cache: true
         ruby-version: ${{ matrix.ruby }}
+        cache-version: 1
     - run: bundle exec rake spec
       if: always()
     - run: bundle exec rake features
