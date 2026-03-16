@@ -58,6 +58,7 @@ function Invoke-Build {
   
         Write-BuildLine " ** Configuring bundler for this build environment"
         bundle config --local without integration deploy maintenance
+        bundle config --local with dep_selector
         bundle config --local jobs 4
         bundle config --local retry 5
         bundle config --local silence_root_warning 1
