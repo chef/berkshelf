@@ -55,14 +55,14 @@ function Invoke-Build {
         Write-BuildLine " ** Installing MSYS2 packages for native gem compilation"
         ridk exec pacman -S mingw-w64-ucrt-x86_64-libffi  libtool --noconfirm --needed
 
-  
+        gem install bundler -v 2.3.3 --force --no-document
         Write-BuildLine " ** Configuring bundler for this build environment"
-        bundle config --local without integration deploy maintenance
-        bundle config --local jobs 4
-        bundle config --local retry 5
-        bundle config --local silence_root_warning 1
+        bundle _2.3.3_ config --local without integration deploy maintenance
+        bundle _2.3.3_ config --local jobs 4
+        bundle _2.3.3_ config --local retry 5
+        bundle _2.3.3_ config --local silence_root_warning 1
         Write-BuildLine " ** Using bundler to retrieve the Ruby dependencies"
-        bundle install --without development
+        bundle _2.3.3_ install --without development
 
         gem build berkshelf.gemspec
 	    Write-BuildLine " ** Using gem to  install"
@@ -86,7 +86,7 @@ function Invoke-Install {
 
     try {
         Push-Location $pkg_prefix
-        bundle config --local gemfile $project_root/Gemfile
+        bundle _2.3.3_ config --local gemfile $project_root/Gemfile
          Write-BuildLine "** generating binstubs for berkshelf with precise version pins"
 	 Write-BuildLine "** generating binstubs for berkshelf with precise version pins $project_root $pkg_prefix/bin "
             Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin berkshelf"

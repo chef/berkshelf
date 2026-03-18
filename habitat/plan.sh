@@ -41,11 +41,15 @@ do_build() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
-  bundle config --local without integration deploy maintenance
-  bundle config --local jobs 4
-  bundle config --local retry 5
-  bundle config --local silence_root_warning 1
-  bundle install --without development --jobs=3 --retry=3
+  
+  build_line "Installing bundler 2.3.3"
+  gem install bundler -v 2.3.3 --force --no-document
+  
+  bundle _2.3.3_ config --local without integration deploy maintenance
+  bundle _2.3.3_ config --local jobs 4
+  bundle _2.3.3_ config --local retry 5
+  bundle _2.3.3_ config --local silence_root_warning 1
+  bundle _2.3.3_ install --without development --jobs=3 --retry=3
   gem build berkshelf.gemspec
 }
 
