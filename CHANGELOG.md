@@ -1,14 +1,15 @@
-<!-- latest_release 8.1.18 -->
-## [v8.1.18](https://github.com/chef/berkshelf/tree/v8.1.18) (2026-03-12)
+<!-- latest_release 8.1.19 -->
+## [v8.1.19](https://github.com/chef/berkshelf/tree/v8.1.19) (2026-03-18)
 
 #### Merged Pull Requests
-- removed core/git pkg deps in hab and upgrade chef version [#93](https://github.com/chef/berkshelf/pull/93) ([sanghinitin](https://github.com/sanghinitin))
+- CHEF-32904 - Using bundler 2.3.3 and Make dep_selector gem optional for GitHub Actions CI compatibility [#96](https://github.com/chef/berkshelf/pull/96) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-32904 - Using bundler 2.3.3 and Make dep_selector gem optional for GitHub Actions CI compatibility [#96](https://github.com/chef/berkshelf/pull/96) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.19 -->
 - removed core/git pkg deps in hab and upgrade chef version [#93](https://github.com/chef/berkshelf/pull/93) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.18 -->
 - Remove base-2025-promote script as its not needed [#94](https://github.com/chef/berkshelf/pull/94) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.17 -->
 - Add chef-infra-client to CODEOWNERS for Gemfile* and gemspec [#91](https://github.com/chef/berkshelf/pull/91) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.1.16 -->
