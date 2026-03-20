@@ -1,39 +1,36 @@
-<!-- latest_release 8.1.21 -->
-## [v8.1.21](https://github.com/chef/berkshelf/tree/v8.1.21) (2026-03-20)
-
-#### Merged Pull Requests
-- Updated the ffi version pin to match with chef 19 [#97](https://github.com/chef/berkshelf/pull/97) ([ashiqueps](https://github.com/ashiqueps))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=8.1.6 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Updated the ffi version pin to match with chef 19 [#97](https://github.com/chef/berkshelf/pull/97) ([ashiqueps](https://github.com/ashiqueps)) <!-- 8.1.21 -->
-- Adding NOTICE file to the hab pkg [#86](https://github.com/chef/berkshelf/pull/86) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.20 -->
-- CHEF-32904 - Using bundler 2.3.3 and Make dep_selector gem optional for GitHub Actions CI compatibility [#96](https://github.com/chef/berkshelf/pull/96) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.19 -->
-- removed core/git pkg deps in hab and upgrade chef version [#93](https://github.com/chef/berkshelf/pull/93) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.18 -->
-- Remove base-2025-promote script as its not needed [#94](https://github.com/chef/berkshelf/pull/94) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.17 -->
-- Add chef-infra-client to CODEOWNERS for Gemfile* and gemspec [#91](https://github.com/chef/berkshelf/pull/91) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.1.16 -->
-- conditionally include chef in gemfile [#90](https://github.com/chef/berkshelf/pull/90) ([rishichawda](https://github.com/rishichawda)) <!-- 8.1.15 -->
-- Chef version version changed to pick latest version [#89](https://github.com/chef/berkshelf/pull/89) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.14 -->
-- bump version for blackduck scan [#87](https://github.com/chef/berkshelf/pull/87) ([Vasu1105](https://github.com/Vasu1105)) <!-- 8.1.13 -->
-- Fix for berkshelf gem test in chef/chef [#88](https://github.com/chef/berkshelf/pull/88) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 8.1.13 -->
-- updating config to  promote  [#84](https://github.com/chef/berkshelf/pull/84) ([poorndm](https://github.com/poorndm)) <!-- 8.1.12 -->
-- updating config to ensure we prmote on the buildkite action, not the … [#83](https://github.com/chef/berkshelf/pull/83) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 8.1.11 -->
-- updating config to ensure we prmote on the buildkite action, not the … [#82](https://github.com/chef/berkshelf/pull/82) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 8.1.10 -->
-- Fix promote path  [#81](https://github.com/chef/berkshelf/pull/81) ([poorndm](https://github.com/poorndm)) <!-- 8.1.9 -->
-- Fix Promote - current to base-2025 [#80](https://github.com/chef/berkshelf/pull/80) ([poorndm](https://github.com/poorndm)) <!-- 8.1.8 -->
-- Enhance expeditor workflow - promote [#79](https://github.com/chef/berkshelf/pull/79) ([poorndm](https://github.com/poorndm)) <!-- 8.1.7 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v8.1.21](https://github.com/chef/berkshelf/tree/v8.1.21) (2026-03-20)
+
+#### Merged Pull Requests
+- Enhance expeditor workflow - promote [#79](https://github.com/chef/berkshelf/pull/79) ([poorndm](https://github.com/poorndm))
+- Fix Promote - current to base-2025 [#80](https://github.com/chef/berkshelf/pull/80) ([poorndm](https://github.com/poorndm))
+- Fix promote path  [#81](https://github.com/chef/berkshelf/pull/81) ([poorndm](https://github.com/poorndm))
+- updating config to ensure we prmote on the buildkite action, not the … [#82](https://github.com/chef/berkshelf/pull/82) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
+- updating config to ensure we prmote on the buildkite action, not the … [#83](https://github.com/chef/berkshelf/pull/83) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
+- updating config to  promote  [#84](https://github.com/chef/berkshelf/pull/84) ([poorndm](https://github.com/poorndm))
+- Fix for berkshelf gem test in chef/chef [#88](https://github.com/chef/berkshelf/pull/88) ([tpowell-progress](https://github.com/tpowell-progress))
+- bump version for blackduck scan [#87](https://github.com/chef/berkshelf/pull/87) ([Vasu1105](https://github.com/Vasu1105))
+- Chef version version changed to pick latest version [#89](https://github.com/chef/berkshelf/pull/89) ([sanghinitin](https://github.com/sanghinitin))
+- conditionally include chef in gemfile [#90](https://github.com/chef/berkshelf/pull/90) ([rishichawda](https://github.com/rishichawda))
+- Add chef-infra-client to CODEOWNERS for Gemfile* and gemspec [#91](https://github.com/chef/berkshelf/pull/91) ([tpowell-progress](https://github.com/tpowell-progress))
+- Remove base-2025-promote script as its not needed [#94](https://github.com/chef/berkshelf/pull/94) ([nikhil2611](https://github.com/nikhil2611))
+- removed core/git pkg deps in hab and upgrade chef version [#93](https://github.com/chef/berkshelf/pull/93) ([sanghinitin](https://github.com/sanghinitin))
+- CHEF-32904 - Using bundler 2.3.3 and Make dep_selector gem optional for GitHub Actions CI compatibility [#96](https://github.com/chef/berkshelf/pull/96) ([nikhil2611](https://github.com/nikhil2611))
+- Adding NOTICE file to the hab pkg [#86](https://github.com/chef/berkshelf/pull/86) ([nikhil2611](https://github.com/nikhil2611))
+- Updated the ffi version pin to match with chef 19 [#97](https://github.com/chef/berkshelf/pull/97) ([ashiqueps](https://github.com/ashiqueps))
+<!-- latest_stable_release -->
+
 ## [v8.1.6](https://github.com/chef/berkshelf/tree/v8.1.6) (2025-09-19)
 
 #### Merged Pull Requests
 - Move syslog dependency from Gemfile to gemspec [#68](https://github.com/chef/berkshelf/pull/68) ([nikhil2611](https://github.com/nikhil2611))
 - Remove Ruby version conditional logic for syslog from gemspec [#70](https://github.com/chef/berkshelf/pull/70) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
 
 ## [v8.1.4](https://github.com/chef/berkshelf/tree/v8.1.4) (2025-09-02)
 
