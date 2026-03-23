@@ -7,9 +7,9 @@ name: CI Pull Request on Main Branch
 
 on: 
   pull_request:
-    branches: [ main, release/** ]
+    branches: [ vj/security-tools-integration, release/** ]
   push:
-    branches: [ main, release/** ]
+    branches: [ vj/security-tools-integration, release/** ]
 
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ permissions:
   contents: read
   
 env:
-  STUB_VERSION: "1.0.7" 
+  STUB_VERSION: "1.0.8"
 
 jobs: 
   echo_version:
