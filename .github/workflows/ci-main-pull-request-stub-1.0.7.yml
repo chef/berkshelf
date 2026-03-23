@@ -98,7 +98,7 @@ jobs:
  
       # BlackDuck SAST (Polaris) require a build or binary present in repo to do SAST testing
       # requires these secrets: POLARIS_SERVER_URL, POLARIS_ACCESS_TOKEN
-      perform-blackduck-polaris: false
+      perform-blackduck-polaris: true
       polaris-application-name: "Chef-Agents"  # one of these: Chef-Agents, Chef-Automate, Chef-Chef360, Chef-Habitat, Chef-Infrastructure-Server, Chef-Shared-Services, Chef-Other, Chef-Non-Product
       polaris-project-name: 'chef-berkshelf'   # arch-sample-cli
       polaris-working-directory: '.' # Working directory for the scan, defaults to . but usually lang-dependent like ./src
