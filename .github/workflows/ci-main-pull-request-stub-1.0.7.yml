@@ -138,7 +138,7 @@ jobs:
       # publish-habitat-hab_version: "1.0.0" # Chef Habitat package version (optional)
       # publish-habitat-hab_release: "20240101010101"  # Chef Habitat package release (optional)
       publish-habitat-hab_channel: "base-2025"  # Chef Habitat package channel (e.g., stable, base, base-2025); default is stable
-      publish-habitat-hab_auth_token: ""   # Chef Habitat Builder authentication token (uses secret if not provided)
+      # publish-habitat-hab_auth_token: uses HAB_AUTH_TOKEN from inherited secrets
       publish-habitat-runner_os: "ubuntu-latest"   # OS runner for Habitat package publishing job, can also be windows-latest
       habitat-grype-scan: true  # Scan built Habitat packages with Grype for vulnerabilities
       publish-packages: false     # Publish packages (e.g., container from Dockerfile to ECR, go-releaser binary to releases page, omnibus to artifactory, gems, choco, homebrew, other app stores)
