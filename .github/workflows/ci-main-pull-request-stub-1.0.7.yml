@@ -64,7 +64,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
     
   call-ci-main-pr-check-pipeline:
-    uses: chef/common-github-actions/.github/workflows/ci-main-pull-request.yml@nikhil/use-hab-1.6
+    uses: chef/common-github-actions/.github/workflows/ci-main-pull-request.yml@v1.0.22
     needs: detect-custom-metadata
     secrets: inherit
     permissions: 
@@ -88,6 +88,11 @@ jobs:
       perform-language-linting: false    # Perform language-specific linting and pre-compilation checks
       perform-trufflehog-scan: true
       perform-trivy-scan: true
+
+      # grype vulnerability scanning
+      # perform-grype-scan: true
+      # grype-fail-on-high: true
+      # grype-fail-on-critical: true
              
       # perform application build and unit testing, will use custom repository properties when implemented for chef-primary-application, chef-build-profile, and chef-build-language
       build: true
@@ -113,6 +118,20 @@ jobs:
       # polaris-config-path: ''   # Path to Detect configuration file, typically a file supplied at root level like ./detect-config.yml
       # polaris-coverity-config-path: ''  # Path to Coverity configuration file, typically a file supplied at root level like ./coverity.yml
       # polaris-coverity-args: '' # Additional Coverity arguments,can supply extra arguments like "--config-override capture.build.build-command=make
+
+      # Perform Grype Scan on habitat packages (only on main branch merges)
+      perform-grype-hab-scan: true
+      grype-hab-build-package: true
+      grype-hab-origin: 'chef'
+      grype-hab-package: 'berkshelf'
+      grype-hab-version: '8.1.21'
+      grype-hab-channel: 'base-2025'
+      grype-hab-scan-linux: true
+      grype-hab-scan-windows: true
+      grype-hab-scan-macos: false
+
+      grype-fail-on-high: true
+      grype-fail-on-critical: true
       
       # perform SonarQube scan, with or without unit test coverage data
       # requires secrets SONAR_TOKEN and SONAR_HOST_URL (progress.sonar.com)
@@ -131,16 +150,16 @@ jobs:
       # quality-junit-report: 'path/to/junit/report''
 
       # perform Habitat-based and native packaging, publish to package repositories
-      package-binaries: true     # Package binaries (e.g., RPM, DEB, MSI, dpkg + signing + SHA)
-      habitat-build: true        # Create Habitat packages
-      publish-habitat-packages: true   # Publish Habitat packages to Builder
-      publish-habitat-hab_package: 'chef/berkshelf' # Chef Habitat package to install (e.g., core/nginx)
+      # package-binaries: true     # Package binaries (e.g., RPM, DEB, MSI, dpkg + signing + SHA)
+      # habitat-build: true        # Create Habitat packages
+      # publish-habitat-packages: true   # Publish Habitat packages to Builder
+      # publish-habitat-hab_package: 'chef/berkshelf' # Chef Habitat package to install (e.g., core/nginx)
       # publish-habitat-hab_version: "1.0.0" # Chef Habitat package version (optional)
       # publish-habitat-hab_release: "20240101010101"  # Chef Habitat package release (optional)
-      publish-habitat-hab_channel: "base-2025"  # Chef Habitat package channel (e.g., stable, base, base-2025); default is stable
-      # publish-habitat-hab_auth_token: uses HAB_AUTH_TOKEN from inherited secrets
-      publish-habitat-runner_os: "ubuntu-latest"   # OS runner for Habitat package publishing job, can also be windows-latest
-      habitat-grype-scan: true  # Scan built Habitat packages with Grype for vulnerabilities
+      # publish-habitat-hab_channel: "base-2025"  # Chef Habitat package channel (e.g., stable, base, base-2025); default is stable
+      # # publish-habitat-hab_auth_token: uses HAB_AUTH_TOKEN from inherited secrets
+      # publish-habitat-runner_os: "ubuntu-latest"   # OS runner for Habitat package publishing job, can also be windows-latest
+      # habitat-grype-scan: true  # Scan built Habitat packages with Grype for vulnerabilities
       publish-packages: false     # Publish packages (e.g., container from Dockerfile to ECR, go-releaser binary to releases page, omnibus to artifactory, gems, choco, homebrew, other app stores)
 
       # generate and export Software Bill of Materials (SBOM) in various formats
