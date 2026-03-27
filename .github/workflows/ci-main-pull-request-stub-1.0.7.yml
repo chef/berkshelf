@@ -28,24 +28,6 @@ jobs:
         run: |
           echo "CI main pull request stub version $STUB_VERSION"
 
-  read_version:
-    name: 'Read version from GitHub release'
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.get_version.outputs.version }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-        
-      - name: Read GitHub latest tagged release version
-        id: get_version
-        run: |
-          VERSION=$(git describe --tags `git rev-list --tags --max-count=1` | sed 's/^v//' 2>/dev/null || echo "1.0.0")
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
   detect-custom-metadata:
     name: 'Detect custom properties'
     runs-on: ubuntu-latest
@@ -83,21 +65,22 @@ jobs:
     
   call-ci-main-pr-check-pipeline:
     uses: chef/common-github-actions/.github/workflows/ci-main-pull-request.yml@v1.0.22
-    needs: read_version
+    needs: detect-custom-metadata
     secrets: inherit
     permissions: 
       id-token: write
       contents: read
 
     with:   
+      application: ${{ needs.detect-custom-metadata.outputs.primaryApp }}
       visibility: ${{ github.event.repository.visibility }}   #  private, public, or internal
       # go-private-modules: GOPRIVATE for Go private modules, default is 'github.com/progress-platform-services/*
 
       # if version specified, it takes precedence; can be a semver like 1.0.2-xyz or a tag like "latest"
-      version: ${{ needs.read_version.outputs.version }}
+      version: '8.1.12' # ${{ github.event.repository.version }}
       detect-version-source-type: 'none' # options include "none" (do not detect), "file", "github-tag" or "github-release"
       detect-version-source-parameter: '' # use for file name
-      language: 'ruby' # Go, Ruby, Rust, JavaScript, TypeScript, Python, Java, C#, PHP, other - used for build and SonarQube language setting
+      language: ${{ needs.detect-custom-metadata.outputs.appBuildLanguage }} # Go, Ruby, Rust, JavaScript, TypeScript, Python, Java, C#, PHP, other - used for build and SonarQube language setting
       
       # complexity-checks, linting, trufflehog and trivy
       perform-complexity-checks: true
@@ -112,8 +95,8 @@ jobs:
       grype-fail-on-critical: true
              
       # perform application build and unit testing, will use custom repository properties when implemented for chef-primary-application, chef-build-profile, and chef-build-language
-      build: false
-      # build-profile: ${{ needs.detect-custom-metadata.outputs.appBuildProfile }}
+      build: true
+      build-profile: ${{ needs.detect-custom-metadata.outputs.appBuildProfile }}
       unit-tests: false
       unit-test-output-path: "path/to/file.out"
       unit-test-command-override: ""
