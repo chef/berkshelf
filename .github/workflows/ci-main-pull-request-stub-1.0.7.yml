@@ -32,10 +32,32 @@ jobs:
     name: 'Detect custom properties'
     runs-on: ubuntu-latest
     outputs:
-      primaryApp: ${{ steps.set-custom-metadata.outputs.primaryApplication }}
+      primaryApplication: ${{ steps.set-custom-metadata.outputs.primaryApplication }}
       appBuildLanguage: ${{ steps.set-custom-metadata.outputs.applicationBuildLanguage }}
       appBuildProfile: ${{ steps.set-custom-metadata.outputs.applicationBuildProfile }}
+      versionFromFile: ${{ steps.set-version-from-file.outputs.versionFromFile }}
     steps:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v4
+
+      - name: 'Detect version from file'
+        id: set-version-from-file
+        shell: bash
+        run: |
+          if [[ -f "VERSION" ]]; then
+            version=$(head -1 VERSION)
+            echo "VERSION_FROM_FILE=${version}" >> $GITHUB_ENV
+            echo "versionFromFile=${version}" >> $GITHUB_OUTPUT
+          elif [[ -f "go.mod" ]]; then
+            version=$(grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' go.mod | head -1)
+            echo "VERSION_FROM_FILE=${version}" >> $GITHUB_ENV
+            echo "versionFromFile=${version}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION_FROM_FILE not found, defaulting to empty"
+            echo "versionFromFile=" >> $GITHUB_OUTPUT
+          fi
+        # do not do echo "::set-output name=versionFromFile::$version" any more per https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
+
       - name: 'Detect app, language, and build profile environment variables from repository custom properties'
         id: set-custom-metadata
       # GH API returns something like [{"property_name":"GABuildLanguage","value":"go"},{"property_name":"GABuildProfile","value":"cli"},{"property_name":"primaryApplication","value":"chef-360"}]'
@@ -46,19 +68,14 @@ jobs:
           GABuildLanguage=$(echo "$response" | jq -r '.[] | select(.property_name=="GABuildLanguage") | .value')
           GABuildProfile=$(echo "$response" | jq -r '.[] | select(.property_name=="GABuildProfile") | .value')
           
-          echo "PRIMARY APP... $primaryApplication"
-          echo "BUILD LANG... $GABuildLanguage"
-          echo "BUILD PROFILE... $GABuildProfile"
-          
           echo "PRIMARY_APPLICATION=$primaryApplication" >> $GITHUB_ENV
           echo "GA_BUILD_LANGUAGE=$GABuildLanguage" >> $GITHUB_ENV
           echo "GA_BUILD_PROFILE=$GABuildProfile" >> $GITHUB_ENV
 
           # If workflow_dispatch, use inputs (left), if other trigger, use default env (right)
-          # echo "::set-output name=build-and-verify::${{ github.event.inputs.build-and-verify || 'true' }}"
-          echo "::set-output name=primaryApplication::$primaryApplication"
-          echo "::set-output name=applicationBuildLanguage::$GABuildLanguage"
-          echo "::set-output name=applicationBuildProfile::$GABuildProfile"
+          echo "primaryApplication=${primaryApplication}" >> $GITHUB_OUTPUT
+          echo "applicationBuildLanguage=${GABuildLanguage}" >> $GITHUB_OUTPUT
+          echo "applicationBuildProfile=${GABuildProfile}" >> $GITHUB_OUTPUT
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
@@ -72,13 +89,13 @@ jobs:
       contents: read
 
     with:   
-      application: ${{ needs.detect-custom-metadata.outputs.primaryApp }}
+      application: ${{ needs.detect-custom-metadata.outputs.primaryApplication }}
       visibility: ${{ github.event.repository.visibility }}   #  private, public, or internal
       # go-private-modules: GOPRIVATE for Go private modules, default is 'github.com/progress-platform-services/*
 
       # if version specified, it takes precedence; can be a semver like 1.0.2-xyz or a tag like "latest"
-      version: '8.1.12' # ${{ github.event.repository.version }}
-      detect-version-source-type: 'none' # options include "none" (do not detect), "file", "github-tag" or "github-release"
+      version: ${{ needs.detect-custom-metadata.outputs.versionFromFile }}
+      detect-version-source-type: 'file' # options include "none" (do not detect), "file", "github-tag" or "github-release"
       detect-version-source-parameter: '' # use for file name
       language: ${{ needs.detect-custom-metadata.outputs.appBuildLanguage }} # Go, Ruby, Rust, JavaScript, TypeScript, Python, Java, C#, PHP, other - used for build and SonarQube language setting
       
@@ -124,7 +141,7 @@ jobs:
       grype-hab-build-package: false
       grype-hab-origin: 'chef'
       grype-hab-package: 'berkshelf'
-      grype-hab-version: '8.1.21'
+      grype-hab-version: ${{ needs.detect-custom-metadata.outputs.versionFromFile }}
       grype-hab-channel: 'unstable'
       grype-hab-scan-linux: true
       grype-hab-scan-windows: true
@@ -146,17 +163,6 @@ jobs:
       # quality-service-name: 'YourServiceOrRepoName'
       # quality-junit-report: 'path/to/junit/report''
 
-      # perform Habitat-based and native packaging, publish to package repositories
-      # package-binaries: true     # Package binaries (e.g., RPM, DEB, MSI, dpkg + signing + SHA)
-      # habitat-build: true        # Create Habitat packages
-      # publish-habitat-packages: true   # Publish Habitat packages to Builder
-      # publish-habitat-hab_package: 'chef/berkshelf' # Chef Habitat package to install (e.g., core/nginx)
-      # publish-habitat-hab_version: "1.0.0" # Chef Habitat package version (optional)
-      # publish-habitat-hab_release: "20240101010101"  # Chef Habitat package release (optional)
-      # publish-habitat-hab_channel: "base-2025"  # Chef Habitat package channel (e.g., stable, base, base-2025); default is stable
-      # # publish-habitat-hab_auth_token: uses HAB_AUTH_TOKEN from inherited secrets
-      # publish-habitat-runner_os: "ubuntu-latest"   # OS runner for Habitat package publishing job, can also be windows-latest
-      # habitat-grype-scan: true  # Scan built Habitat packages with Grype for vulnerabilities
       publish-packages: false     # Publish packages (e.g., container from Dockerfile to ECR, go-releaser binary to releases page, omnibus to artifactory, gems, choco, homebrew, other app stores)
 
       # generate and export Software Bill of Materials (SBOM) in various formats
