@@ -136,8 +136,8 @@ jobs:
       # polaris-coverity-config-path: ''  # Path to Coverity configuration file, typically a file supplied at root level like ./coverity.yml
       # polaris-coverity-args: '' # Additional Coverity arguments,can supply extra arguments like "--config-override capture.build.build-command=make
 
-      # Perform Grype Scan on habitat packages
-      perform-grype-hab-scan: true
+      # Perform Grype Scan on habitat packages (only on PR merge, not PR creation)
+      perform-grype-hab-scan: ${{ github.event_name == 'push' }}
       grype-hab-build-package: false
       grype-hab-origin: 'chef'
       grype-hab-package: 'berkshelf'
