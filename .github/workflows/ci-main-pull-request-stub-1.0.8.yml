@@ -137,7 +137,7 @@ jobs:
       # polaris-coverity-args: '' # Additional Coverity arguments,can supply extra arguments like "--config-override capture.build.build-command=make
 
       # Perform Grype Scan on habitat packages (only on PR merge, not PR creation)
-      perform-grype-hab-scan: ${{ github.event_name == 'push' }}
+      perform-grype-hab-scan: true
       grype-hab-build-package: false
       grype-hab-origin: 'chef'
       grype-hab-package: 'berkshelf'
