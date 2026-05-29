@@ -15,15 +15,17 @@ pkg_build_deps=(
 )
 
 do_setup_environment() {
-  build_line 'Setting GEM_HOME="$pkg_prefix/vendor"'
-  export GEM_HOME="$pkg_prefix/vendor"
+  push_runtime_env GEM_PATH "${pkg_prefix}/vendor"
 
-  build_line "Setting GEM_PATH=$GEM_HOME"
-  export GEM_PATH="$GEM_HOME"
+  set_runtime_env APPBUNDLER_ALLOW_RVM "true" # prevent appbundler from clearing out the carefully constructed runtime GEM_PATH
+  set_runtime_env LANG "en_US.UTF-8"
+  set_runtime_env LC_CTYPE "en_US.UTF-8"
 }
 
 do_prepare() {
-  ln -sf "$(pkg_interpreter_for core/ruby3_4 bin/ruby)" "$(pkg_interpreter_for core/coreutils bin/env)"
+  if [[ ! -f /usr/bin/env ]]; then
+    ln -s "$(pkg_interpreter_for core/coreutils bin/env)" /usr/bin/env
+  fi
 }
 
 pkg_version() {
@@ -69,7 +71,7 @@ do_install() {
   gem install berkshelf-*.gem --no-document
 
   build_line "** generating binstubs for berkshelf with precise version pins"
-  "$(pkg_path_for $ruby_pkg)/bin/ruby" "${pkg_prefix}/vendor/bin/appbundler" . "$pkg_prefix/bin" berkshelf
+  "${pkg_prefix}/vendor/bin/appbundler" . "$pkg_prefix/bin" berkshelf
 
   build_line "** patching binstubs to allow running directly"
   for binstub in ${pkg_prefix}/bin/*; do
@@ -91,4 +93,11 @@ do_after() {
 
 do_strip() {
   return 0
+}
+
+do_end() {
+  if [[ "$(readlink /usr/bin/env)" = "$(pkg_interpreter_for core/coreutils bin/env)" ]]; then
+    build_line "Removing the symlink we created for '/usr/bin/env'"
+    rm /usr/bin/env
+  fi
 }
