@@ -69,7 +69,7 @@ do_install() {
   gem install berkshelf-*.gem --no-document
 
   build_line "** generating binstubs for berkshelf with precise version pins"
-  "${pkg_prefix}/vendor/bin/appbundler" . "$pkg_prefix/bin" berkshelf
+  "$(pkg_path_for $ruby_pkg)/bin/ruby" "${pkg_prefix}/vendor/bin/appbundler" . "$pkg_prefix/bin" berkshelf
 
   build_line "** patching binstubs to allow running directly"
   for binstub in ${pkg_prefix}/bin/*; do
