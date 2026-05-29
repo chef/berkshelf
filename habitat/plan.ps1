@@ -98,11 +98,9 @@ function Invoke-Install {
     try {
         Push-Location $pkg_prefix
         bundle _2.3.3_ config --local gemfile $project_root/Gemfile
-         Write-BuildLine "** generating binstubs for berkshelf with precise version pins"
-	 Write-BuildLine "** generating binstubs for berkshelf with precise version pins $project_root $pkg_prefix/bin "
-            Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin berkshelf"
-            If ($lastexitcode -ne 0) { Exit $lastexitcode }
-	Write-BuildLine " ** Running the berkshelf project's 'rake install' to install the path-based gems so they look like any other installed gem."
+        Write-BuildLine "** generating binstubs for berkshelf with precise version pins $project_root $pkg_prefix/bin "
+        Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin berkshelf"
+        If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
     } finally {
@@ -123,6 +121,10 @@ function Invoke-After {
     # only inspec's for package verification.
     Get-ChildItem $pkg_prefix/vendor/gems -Filter "spec" -Directory -Recurse -Depth 1 `
         | Where-Object -FilterScript { $_.FullName -notlike "*berkshelf*" }             `
+        | Remove-Item -Recurse -Force
+    # Remove .github directories from vendored gems to avoid shipping GHA workflow
+    # files that trigger grype vulnerability reports (e.g. step-security/harden-runner CVEs).
+    Get-ChildItem $pkg_prefix/vendor/gems -Filter ".github" -Directory -Recurse `
         | Remove-Item -Recurse -Force
     # Remove the byproducts of compiling gems with extensions
     Get-ChildItem $pkg_prefix/vendor/gems -Include @("gem_make.out", "mkmf.log", "Makefile") -File -Recurse `

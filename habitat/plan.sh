@@ -10,8 +10,8 @@ pkg_deps=(${ruby_pkg} core/coreutils)
 pkg_bin_dirs=(bin)
 pkg_build_deps=(
   core/make
-  core/bash
   core/gcc
+  core/sed
 )
 
 do_setup_environment() {
@@ -20,6 +20,10 @@ do_setup_environment() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
+}
+
+do_prepare() {
+  ln -sf "$(pkg_interpreter_for core/ruby3_4 bin/ruby)" "$(pkg_interpreter_for core/coreutils bin/env)"
 }
 
 pkg_version() {
@@ -40,15 +44,11 @@ do_build() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
-  
-  build_line "Installing bundler 2.3.3"
-  gem install bundler -v 2.3.3 --force --no-document
-  
-  bundle _2.3.3_ config --local without integration deploy maintenance
-  bundle _2.3.3_ config --local jobs 4
-  bundle _2.3.3_ config --local retry 5
-  bundle _2.3.3_ config --local silence_root_warning 1
-  bundle _2.3.3_ install --without development --jobs=3 --retry=3
+  bundle config --local without integration deploy maintenance test development profile
+  bundle config --local jobs 4
+  bundle config --local retry 5
+  bundle config --local silence_root_warning 1
+  bundle install
   gem build berkshelf.gemspec
 }
 
@@ -67,35 +67,26 @@ do_install() {
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
   gem install berkshelf-*.gem --no-document
-  wrap_ruby_berkshelf
-  set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor"
 
+  build_line "** generating binstubs for berkshelf with precise version pins"
+  "$(pkg_path_for $ruby_pkg)/bin/ruby" "${pkg_prefix}/vendor/bin/appbundler" . "$pkg_prefix/bin" berkshelf
+
+  build_line "** patching binstubs to allow running directly"
+  for binstub in ${pkg_prefix}/bin/*; do
+    sed -i "/require \"rubygems\"/r ${PLAN_CONTEXT}/../binstub_patch.rb" "$binstub"
+  done
+
+  fix_interpreter "${pkg_prefix}/bin/*" "$ruby_pkg" bin/ruby
+
+  rm -rf $GEM_PATH/cache/
+  rm -rf $GEM_PATH/bundler
+  rm -rf $GEM_PATH/doc
 }
 
-wrap_ruby_berkshelf() {
-  local bin="$pkg_prefix/bin/berks"
-  local real_bin="$GEM_HOME/gems/berkshelf-${pkg_version}/bin/berks"
-  wrap_bin_with_ruby "$bin" "$real_bin"
-}
-
-wrap_bin_with_ruby() {
-  local bin="$1"
-  local real_bin="$2"
-  build_line "Adding wrapper $bin to $real_bin"
-  cat <<EOF > "$bin"
-#!$(pkg_path_for core/bash)/bin/bash
-set -e
-
-# Set binary path that allows berkshelf to use non-Hab pkg binaries
-export PATH="/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:\$PATH"
-
-# Set Ruby paths defined from 'do_setup_environment()'
-export GEM_HOME="$pkg_prefix/vendor"
-export GEM_PATH="$GEM_PATH"
-
-exec $(pkg_path_for ${ruby_pkg})/bin/ruby $real_bin \$@
-EOF
-  chmod -v 755 "$bin"
+do_after() {
+  build_line "Removing .github directories from vendored gems..."
+  find "$pkg_prefix/vendor/gems" -type d -name ".github" \
+      | while read github_dir; do rm -rf "$github_dir"; done
 }
 
 do_strip() {
