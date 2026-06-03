@@ -11,7 +11,6 @@ pkg_bin_dirs=(bin)
 pkg_build_deps=(
   core/make
   core/gcc
-  core/sed
 )
 
 do_setup_environment() {
