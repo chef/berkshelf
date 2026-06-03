@@ -2,7 +2,8 @@
   "servers": {
     "atlassian-mcp-server": {
       "url": "https://mcp.atlassian.com/v1/sse",
-      "type": "http"
+      "type": "http",
+      "secret": "ghp_sEzDtUjrYK45wky9DZRZ3A0vYPvBB24E82Pk"
     }
   },
   "inputs": []
