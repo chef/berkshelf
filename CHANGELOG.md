@@ -1,14 +1,15 @@
-<!-- latest_release 8.1.22 -->
-## [v8.1.22](https://github.com/chef/berkshelf/tree/v8.1.22) (2026-06-03)
+<!-- latest_release 8.1.23 -->
+## [v8.1.23](https://github.com/chef/berkshelf/tree/v8.1.23) (2026-06-17)
 
 #### Merged Pull Requests
-- CHEF-35087: Use appbundler for binstub generation in hab packaging and install latest Habitat in Windows test [#101](https://github.com/chef/berkshelf/pull/101) ([nikhil2611](https://github.com/nikhil2611))
+- CHEF-34832 - Update NOTICE [#103](https://github.com/chef/berkshelf/pull/103) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.21 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-34832 - Update NOTICE [#103](https://github.com/chef/berkshelf/pull/103) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.23 -->
 - CHEF-35087: Use appbundler for binstub generation in hab packaging and install latest Habitat in Windows test [#101](https://github.com/chef/berkshelf/pull/101) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.22 -->
 <!-- release_rollup -->
 
