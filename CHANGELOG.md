@@ -1,19 +1,17 @@
-<!-- latest_release 8.1.23 -->
-## [v8.1.23](https://github.com/chef/berkshelf/tree/v8.1.23) (2026-06-17)
-
-#### Merged Pull Requests
-- CHEF-34832 - Update NOTICE [#103](https://github.com/chef/berkshelf/pull/103) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=8.1.21 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- CHEF-34832 - Update NOTICE [#103](https://github.com/chef/berkshelf/pull/103) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.23 -->
-- CHEF-35087: Use appbundler for binstub generation in hab packaging and install latest Habitat in Windows test [#101](https://github.com/chef/berkshelf/pull/101) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.22 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v8.1.23](https://github.com/chef/berkshelf/tree/v8.1.23) (2026-06-18)
+
+#### Merged Pull Requests
+- CHEF-35087: Use appbundler for binstub generation in hab packaging and install latest Habitat in Windows test [#101](https://github.com/chef/berkshelf/pull/101) ([nikhil2611](https://github.com/nikhil2611))
+- CHEF-34832 - Update NOTICE [#103](https://github.com/chef/berkshelf/pull/103) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_stable_release -->
+
 ## [v8.1.21](https://github.com/chef/berkshelf/tree/v8.1.21) (2026-03-20)
 
 #### Merged Pull Requests
@@ -33,7 +31,6 @@
 - CHEF-32904 - Using bundler 2.3.3 and Make dep_selector gem optional for GitHub Actions CI compatibility [#96](https://github.com/chef/berkshelf/pull/96) ([nikhil2611](https://github.com/nikhil2611))
 - Adding NOTICE file to the hab pkg [#86](https://github.com/chef/berkshelf/pull/86) ([nikhil2611](https://github.com/nikhil2611))
 - Updated the ffi version pin to match with chef 19 [#97](https://github.com/chef/berkshelf/pull/97) ([ashiqueps](https://github.com/ashiqueps))
-<!-- latest_stable_release -->
 
 ## [v8.1.6](https://github.com/chef/berkshelf/tree/v8.1.6) (2025-09-19)
 
