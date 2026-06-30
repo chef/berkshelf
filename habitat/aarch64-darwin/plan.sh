@@ -13,12 +13,12 @@ pkg_build_deps=(
   core/make
   core/cmake
 )
-pkg_deps=(${ruby_pkg} core/coreutils core/libarchive)
+pkg_deps=(${ruby_pkg} core/coreutils core/libarchive core/cacerts)
 
 pkg_svc_user=root
 
 pkg_version() {
-  cat "$SRC_PATH/VERSION"
+  cat "$PLAN_CONTEXT/../../VERSION"
 }
 
 do_before() {
