@@ -1,7 +1,15 @@
-<!-- latest_release -->
+<!-- latest_release 8.1.24 -->
+## [v8.1.24](https://github.com/chef/berkshelf/tree/v8.1.24) (2026-07-21)
+
+#### Merged Pull Requests
+- CHEF-34739: Add macOS aarch64-darwin Habitat plan for berkshelf [#104](https://github.com/chef/berkshelf/pull/104) ([sanghinitin](https://github.com/sanghinitin))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=8.1.23 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- CHEF-34739: Add macOS aarch64-darwin Habitat plan for berkshelf [#104](https://github.com/chef/berkshelf/pull/104) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.24 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
