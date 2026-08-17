@@ -1,12 +1,15 @@
-<!-- latest_release 8.1.24 -->
-## [v8.1.24](https://github.com/chef/berkshelf/tree/v8.1.24) (2026-07-21)
+<!-- latest_release 8.1.25 -->
+## [v8.1.25](https://github.com/chef/berkshelf/tree/v8.1.25) (2026-08-17)
 
-#### Merged Pull Requests
-- CHEF-34739: Add macOS aarch64-darwin Habitat plan for berkshelf [#104](https://github.com/chef/berkshelf/pull/104) ([sanghinitin](https://github.com/sanghinitin))
+#### Bug Fixes
+- CHEF-37581: Fix SSL certificate verification in Habitat builds and runtime [#106](https://github.com/chef/berkshelf/pull/106) ([sanghinitin](https://github.com/sanghinitin))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.23 -->
 ### Changes not yet released to rubygems.org
+
+#### Bug Fixes
+- CHEF-37581: Fix SSL certificate verification in Habitat builds and runtime [#106](https://github.com/chef/berkshelf/pull/106) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.25 -->
 
 #### Merged Pull Requests
 - CHEF-34739: Add macOS aarch64-darwin Habitat plan for berkshelf [#104](https://github.com/chef/berkshelf/pull/104) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.24 -->
