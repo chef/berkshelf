@@ -54,6 +54,8 @@ do_build() {
   export PATH="$(pkg_path_for core/cmake)/bin:$(pkg_path_for core/make)/bin:$(pkg_path_for core/clang)/bin:$PATH"
   export CC="$(pkg_path_for core/clang)/bin/clang"
   export CXX="$(pkg_path_for core/clang)/bin/clang++"
+  export SSL_CERT_FILE="${SSL_CERT_FILE:-$(pkg_path_for core/cacerts)/ssl/certs/cacert.pem}"
+  export SSL_CERT_DIR="${SSL_CERT_DIR:-$(pkg_path_for core/cacerts)/ssl/certs}"
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
@@ -109,6 +111,8 @@ export PATH="$(pkg_path_for ${ruby_pkg})/bin:/sbin:/usr/sbin:/usr/local/sbin:/us
 export DYLD_LIBRARY_PATH="$(pkg_path_for core/libarchive)/lib:\$DYLD_LIBRARY_PATH"
 export GEM_HOME="$pkg_prefix/vendor"
 export GEM_PATH="$pkg_prefix/vendor"
+export SSL_CERT_FILE="\${SSL_CERT_FILE:-$(pkg_path_for core/cacerts)/ssl/certs/cacert.pem}"
+export SSL_CERT_DIR="\${SSL_CERT_DIR:-$(pkg_path_for core/cacerts)/ssl/certs}"
 
 exec $(pkg_path_for ${ruby_pkg})/bin/ruby $pkg_prefix/libexec/berks "\$@"
 EOF

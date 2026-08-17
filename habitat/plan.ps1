@@ -10,6 +10,7 @@ $pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 
 $pkg_deps=@(
   "core/ruby3_4-plus-devkit"
+  "core/cacerts"
 )
 $pkg_build_deps=@(
   "core/git"
@@ -40,6 +41,9 @@ function Invoke-Build {
         $env:Path += ";c:\\Program Files\\Git\\bin"
         Push-Location $project_root
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
+        $cacertsPkgPath = & hab pkg path core/cacerts
+        if (-not $env:SSL_CERT_FILE) { $env:SSL_CERT_FILE = "$cacertsPkgPath/ssl/certs/cacert.pem" }
+        if (-not $env:SSL_CERT_DIR)  { $env:SSL_CERT_DIR  = "$cacertsPkgPath/ssl/certs" }
         # enable ridk for native gem build 
 
         $rubyPkgPath = & hab pkg path core/ruby3_4-plus-devkit

@@ -6,7 +6,7 @@ ruby_pkg="core/ruby3_4"
 pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 pkg_description="Manage Chef Infra cookbooks and cookbook dependencies."
 pkg_license=('Apache-2.0')
-pkg_deps=(${ruby_pkg} core/coreutils)
+pkg_deps=(${ruby_pkg} core/coreutils core/cacerts)
 pkg_bin_dirs=(bin)
 pkg_build_deps=(
   core/make
@@ -42,6 +42,8 @@ do_unpack() {
 
 do_build() {
   export GEM_HOME="$pkg_prefix/vendor"
+  export SSL_CERT_FILE="${SSL_CERT_FILE:-$(pkg_path_for core/cacerts)/ssl/certs/cacert.pem}"
+  export SSL_CERT_DIR="${SSL_CERT_DIR:-$(pkg_path_for core/cacerts)/ssl/certs}"
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
