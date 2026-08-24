@@ -29,6 +29,13 @@ RSpec.configure do |config|
   config.filter_run_excluding not_supported_on_windows: windows?
   config.run_all_when_everything_filtered = true
 
+  # Run examples in a random order so that one leaking state into another fails
+  # visibly, instead of passing forever because the file order happens to hide
+  # it. Seeding from config.seed keeps a failing order reproducible: the seed is
+  # printed with the results and can be replayed with --seed.
+  config.order = :random
+  Kernel.srand config.seed
+
   config.before(:each) do
     Berkshelf.logger = Berkshelf::Logger.new(nil)
     Berkshelf.set_format(:null)
