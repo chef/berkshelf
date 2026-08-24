@@ -225,7 +225,6 @@ describe Berkshelf::Berksfile do
     it "retrieves the locked (cached) cookbook for each dependency" do
       subject.add_dependency("bacon", nil)
       subject.add_dependency("ham", nil)
-      allow(subject).to receive(:retrive_locked)
 
       expect(subject).to receive(:retrieve_locked).twice
       subject.cookbooks
