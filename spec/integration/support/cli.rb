@@ -106,6 +106,10 @@ module Berkshelf
           fragments.each { |fragment| expect(berks_output).to include(fragment) }
         end
 
+        def expect_output_matching(*patterns)
+          patterns.each { |pattern| expect(berks_output).to match(pattern) }
+        end
+
         def expect_no_output(*fragments)
           fragments.each { |fragment| expect(berks_output).not_to include(fragment) }
         end
@@ -153,6 +157,14 @@ module Berkshelf
               directory "#{name}-#{version}"
             }
           end
+        end
+
+        def expect_file_contains(path, content)
+          expect(read(path).join("\n")).to include(content)
+        end
+
+        def expect_file_does_not_contain(path, content)
+          expect(read(path).join("\n")).not_to include(content)
         end
 
         def expect_files_in(directory, *files)

@@ -23,8 +23,12 @@ Dir[File.expand_path("integration/support/**/*.rb", __dir__)].sort.each { |f| re
 require "berkshelf/cli"
 
 # One chef-zero instance serves both the cookbook universe and the Chef server
-# for these specs, so both names resolve to the same port.
-CHEF_SERVER_PORT = Berkshelf::RSpec::ChefServer::PORT
+# for these specs, so both names resolve to the same port. The value has to
+# match chef_server_url in spec/config/knife.rb, which berks reads when it talks
+# to the Chef Server -- `berks apply` and `berks upload` fail to connect
+# otherwise. It deliberately differs from the unit suite's port so the two can
+# run at the same time.
+CHEF_SERVER_PORT = 26310
 BERKS_API_PORT   = CHEF_SERVER_PORT
 
 RSpec.configure do |config|
