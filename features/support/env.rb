@@ -1,10 +1,3 @@
-# Ruby 3.4 compatibility patch for File.exists? deprecation
-class File
-  class << self
-    alias_method :exists?, :exist? unless method_defined?(:exists?)
-  end
-end
-
 def windows?
   !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
 end
