@@ -44,8 +44,8 @@ module Berkshelf
       ChefConfig::Config.send(name, *args, &block)
     end
 
-    def respond_to_missing?(name)
-      ChefConfig::Config.respond_to?(name)
+    def respond_to_missing?(name, include_private = false)
+      ChefConfig::Config.respond_to?(name, include_private) || super
     end
   end
 end
