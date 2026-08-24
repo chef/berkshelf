@@ -33,24 +33,12 @@ Gem::Specification.new do |s|
     "changelog_uri"   => "https://github.com/chef/berkshelf/blob/main/CHANGELOG.md",
   }
 
-  ruby_version = Gem::Version.new(RUBY_VERSION)
-
   s.add_dependency "mixlib-shellout", ">= 2.0", "< 4.0"
 
   s.add_dependency "chef-cleanroom", "~> 1.0"
 
-  if ruby_version >= Gem::Version.new("3.1.0")
-    s.add_dependency "minitar",              "~> 1.0"
-    s.add_dependency "chef",                 ">= 18.10"
-  else
-    s.add_dependency "minitar",              "~> 0.12"
-
-    if ruby_version >= Gem::Version.new("3.0.0")
-      s.add_dependency "chef",                 "~> 17.0" # needed for --skip-syntax-check
-    else
-      s.add_dependency "chef",                 ">= 15.7.32"
-    end
-  end
+  s.add_dependency "minitar",              "~> 1.0"
+  s.add_dependency "chef",                 ">= 18.10"
 
   s.add_dependency "retryable",            ">= 2.0", "< 4.0"
   s.add_dependency "solve",                "~> 4.0"
