@@ -53,7 +53,7 @@ RSpec.configure do |config|
   config.before(:suite) { Berkshelf::RSpec::ChefServer.start(port: CHEF_SERVER_PORT) }
   config.after(:suite)  { Berkshelf::RSpec::ChefServer.stop }
 
-  config.before(:each, type: :aruba) do
+  config.before(:each, type: :aruba) do |example|
     # Aruba removes and recreates its working directory as each example sets up,
     # and its own hook runs ahead of this one. The in-process launcher leaves the
     # process inside that directory, so by the time we get here it can be sitting
@@ -61,7 +61,9 @@ RSpec.configure do |config|
     # subprocess such as git -- fails with Errno::ENOENT.
     Dir.chdir(Berkshelf.root)
 
-    aruba.config.command_launcher = :in_process
+    # Interactive examples cannot use the in-process launcher, which has no
+    # stdin to type into. Those opt in with `spawn: true`.
+    aruba.config.command_launcher = example.metadata[:spawn] ? :spawn : :in_process
     aruba.config.main_class = Berkshelf::Cli::Runner
     aruba.config.io_wait_timeout = 5
     aruba.config.exit_timeout = 15
