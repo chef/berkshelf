@@ -249,7 +249,7 @@ module Berkshelf
     # @return [Berkshelf::Dependency, nil]
     #   the cookbook dependency from this lockfile or nil if one was not found
     def find(dependency)
-      @dependencies[Dependency.name(dependency)]
+      @dependencies[Dependency.name_for(dependency)]
     end
 
     # Determine if this lockfile contains the given dependency.
@@ -272,7 +272,7 @@ module Berkshelf
     #
     # @return [Dependency]
     def add(dependency)
-      @dependencies[Dependency.name(dependency)] = dependency
+      @dependencies[Dependency.name_for(dependency)] = dependency
     end
 
     def locks
@@ -292,10 +292,10 @@ module Berkshelf
     # @return [CachedCookbook]
     #   the CachedCookbook that corresponds to the given name parameter
     def retrieve(dependency)
-      locked = graph.locks[Dependency.name(dependency)]
+      locked = graph.locks[Dependency.name_for(dependency)]
 
       if locked.nil?
-        raise DependencyNotFound.new(Dependency.name(dependency))
+        raise DependencyNotFound.new(Dependency.name_for(dependency))
       end
 
       unless locked.installed?
@@ -341,7 +341,7 @@ module Berkshelf
       @dependencies = {}
 
       dependencies.each do |dependency|
-        @dependencies[Dependency.name(dependency)] = dependency
+        @dependencies[Dependency.name_for(dependency)] = dependency
       end
     end
 
@@ -356,7 +356,7 @@ module Berkshelf
     # @param [String] dependency
     #   the name of the cookbook to remove
     def unlock(dependency, force = false)
-      @dependencies.delete(Dependency.name(dependency))
+      @dependencies.delete(Dependency.name_for(dependency))
 
       if force
         graph.remove(dependency, ignore: graph.locks.keys)
@@ -685,7 +685,7 @@ module Berkshelf
       # @return [GraphItem, nil]
       #   the item for the name
       def find(dependency)
-        @graph[Dependency.name(dependency)]
+        @graph[Dependency.name_for(dependency)]
       end
 
       # Find if the given lock exists?
@@ -709,7 +709,7 @@ module Berkshelf
       # @option options [String, Array<String>] :ignore
       #   the list of dependencies to ignore
       def dependency?(dependency, options = {})
-        name   = Dependency.name(dependency)
+        name   = Dependency.name_for(dependency)
         ignore = Hash[*Array(options[:ignore]).map { |i| [i, true] }.flatten]
 
         @graph.values.each do |item|
@@ -745,7 +745,7 @@ module Berkshelf
       # @option options [String, Array<String>] :ignore
       #   the list of dependencies to ignore
       def remove(dependency, options = {})
-        name = Dependency.name(dependency)
+        name = Dependency.name_for(dependency)
 
         if @lockfile.dependency?(name)
           return
