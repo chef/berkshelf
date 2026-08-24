@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.name                      = "berkshelf"
   s.require_paths             = ["lib"]
   s.version                   = Berkshelf::VERSION
-  s.required_ruby_version     = ">= 3.1.0"
+  s.required_ruby_version     = ">= 3.2.0"
   s.required_rubygems_version = ">= 2.0.0"
   s.metadata                  = {
     "bug_tracker_uri" => "https://github.com/chef/berkshelf/issues",
@@ -44,7 +44,10 @@ Gem::Specification.new do |s|
   s.add_dependency "solve",                "~> 4.0"
 
   s.add_dependency "thor",                 "~> 1.4"
-  s.add_dependency "octokit",              ">= 4.0", "< 6.0"
+  s.add_dependency "octokit",              ">= 4.0", "< 11.0"
+  # Faraday 2 split the retry middleware into its own gem. Octokit requires it
+  # lazily and silently drops retries (with a warning) when it is missing.
+  s.add_dependency "faraday-retry",        "~> 2.0"
 
   s.add_dependency "mixlib-archive",       ">= 1.1.4", "< 2.0" # needed for ruby 3.0 / Dir.chdir removal
   s.add_dependency "concurrent-ruby",      "~> 1.0"
