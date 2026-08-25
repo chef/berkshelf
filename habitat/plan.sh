@@ -1,5 +1,16 @@
 export HAB_BLDR_CHANNEL="base-2025"
 export HAB_REFRESH_CHANNEL="base-2025"
+
+# Resolve the repo root from this file's own location (BASH_SOURCE) rather
+# than PLAN_CONTEXT. PLAN_CONTEXT is set by Habitat to the directory it
+# started the build from, which is NOT necessarily the directory this file
+# lives in -- e.g. when habitat/aarch64-linux/plan.sh sources this file,
+# PLAN_CONTEXT is "habitat/aarch64-linux", not "habitat", which breaks any
+# "${PLAN_CONTEXT}/.." reference used here. BASH_SOURCE[0] always points at
+# this file, so it resolves correctly regardless of which plan sourced it.
+BERKSHELF_PLAN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BERKSHELF_REPO_ROOT="$(cd "${BERKSHELF_PLAN_DIR}/.." && pwd)"
+
 pkg_name="berkshelf"
 pkg_origin="chef"
 ruby_pkg="core/ruby3_4"
@@ -37,7 +48,7 @@ do_before() {
 
 do_unpack() {
   mkdir -pv "$HAB_CACHE_SRC_PATH/$pkg_dirname"
-  cp -RT "$PLAN_CONTEXT"/.. "$HAB_CACHE_SRC_PATH/$pkg_dirname/"
+  cp -RT "$BERKSHELF_REPO_ROOT" "$HAB_CACHE_SRC_PATH/$pkg_dirname/"
 }
 
 do_build() {
@@ -56,11 +67,11 @@ do_build() {
 do_install() {
 
   # Copy NOTICE to the package directory
-  if [[ -f "$PLAN_CONTEXT/../NOTICE" ]]; then
+  if [[ -f "${BERKSHELF_REPO_ROOT}/NOTICE" ]]; then
     build_line "Copying NOTICE to package directory"
-    cp "$PLAN_CONTEXT/../NOTICE" "$pkg_prefix/"
+    cp "${BERKSHELF_REPO_ROOT}/NOTICE" "$pkg_prefix/"
   else
-    build_line "Warning: NOTICE not found at $PLAN_CONTEXT/../NOTICE"
+    build_line "Warning: NOTICE not found at ${BERKSHELF_REPO_ROOT}/NOTICE"
   fi
 
   export GEM_HOME="$pkg_prefix/vendor"
@@ -73,15 +84,15 @@ do_install() {
   "${pkg_prefix}/vendor/bin/appbundler" . "$pkg_prefix/bin" berkshelf
 
   build_line "** patching binstubs to allow running directly"
-  for binstub in ${pkg_prefix}/bin/*; do
-    sed -i "/require \"rubygems\"/r ${PLAN_CONTEXT}/../binstub_patch.rb" "$binstub"
+  for binstub in "${pkg_prefix}"/bin/*; do
+    sed -i "/require \"rubygems\"/r ${BERKSHELF_REPO_ROOT}/binstub_patch.rb" "$binstub"
   done
 
   fix_interpreter "${pkg_prefix}/bin/*" "$ruby_pkg" bin/ruby
 
-  rm -rf $GEM_PATH/cache/
-  rm -rf $GEM_PATH/bundler
-  rm -rf $GEM_PATH/doc
+  rm -rf "${GEM_PATH:?}/cache/"
+  rm -rf "${GEM_PATH:?}/bundler"
+  rm -rf "${GEM_PATH:?}/doc"
 }
 
 do_after() {
