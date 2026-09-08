@@ -1,8 +1,8 @@
-<!-- latest_release 8.1.26 -->
-## [v8.1.26](https://github.com/chef/berkshelf/tree/v8.1.26) (2026-08-26)
+<!-- latest_release 8.1.27 -->
+## [v8.1.27](https://github.com/chef/berkshelf/tree/v8.1.27) (2026-09-08)
 
 #### Merged Pull Requests
-- CHEF-37331: add Linux ARM Habitat validation in Expeditor pipeline [#105](https://github.com/chef/berkshelf/pull/105) ([sanjain-progress](https://github.com/sanjain-progress))
+- Remove unreachable Ruby version branches from gemspec [#107](https://github.com/chef/berkshelf/pull/107) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.23 -->
@@ -12,6 +12,7 @@
 - CHEF-37581: Fix SSL certificate verification in Habitat builds and runtime [#106](https://github.com/chef/berkshelf/pull/106) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.25 -->
 
 #### Merged Pull Requests
+- Remove unreachable Ruby version branches from gemspec [#107](https://github.com/chef/berkshelf/pull/107) ([tas50](https://github.com/tas50)) <!-- 8.1.27 -->
 - CHEF-37331: add Linux ARM Habitat validation in Expeditor pipeline [#105](https://github.com/chef/berkshelf/pull/105) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 8.1.26 -->
 - CHEF-34739: Add macOS aarch64-darwin Habitat plan for berkshelf [#104](https://github.com/chef/berkshelf/pull/104) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.24 -->
 <!-- release_rollup -->
