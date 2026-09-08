@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.name                      = "berkshelf"
   s.require_paths             = ["lib"]
   s.version                   = Berkshelf::VERSION
-  s.required_ruby_version     = ">= 3.2.0"
+  s.required_ruby_version     = ">= 3.1.0"
   s.metadata                  = {
     "bug_tracker_uri" => "https://github.com/chef/berkshelf/issues",
     "source_code_uri" => "https://github.com/chef/berkshelf",
