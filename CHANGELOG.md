@@ -1,8 +1,8 @@
-<!-- latest_release 8.1.28 -->
-## [v8.1.28](https://github.com/chef/berkshelf/tree/v8.1.28) (2026-11-06)
+<!-- latest_release 8.1.29 -->
+## [v8.1.29](https://github.com/chef/berkshelf/tree/v8.1.29) (2026-11-11)
 
 #### Merged Pull Requests
-- Fix Windows habitat test pipeline: install hab from stable channel [#109](https://github.com/chef/berkshelf/pull/109) ([nikhil2611](https://github.com/nikhil2611))
+- update NOTICE file [#110](https://github.com/chef/berkshelf/pull/110) ([sanjain-progress](https://github.com/sanjain-progress))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.23 -->
@@ -12,6 +12,7 @@
 - CHEF-37581: Fix SSL certificate verification in Habitat builds and runtime [#106](https://github.com/chef/berkshelf/pull/106) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.25 -->
 
 #### Merged Pull Requests
+- update NOTICE file [#110](https://github.com/chef/berkshelf/pull/110) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 8.1.29 -->
 - Fix Windows habitat test pipeline: install hab from stable channel [#109](https://github.com/chef/berkshelf/pull/109) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.28 -->
 - Remove unreachable Ruby version branches from gemspec [#107](https://github.com/chef/berkshelf/pull/107) ([tas50](https://github.com/tas50)) <!-- 8.1.27 -->
 - CHEF-37331: add Linux ARM Habitat validation in Expeditor pipeline [#105](https://github.com/chef/berkshelf/pull/105) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 8.1.26 -->
