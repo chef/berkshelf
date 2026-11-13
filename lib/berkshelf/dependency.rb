@@ -1,14 +1,14 @@
 module Berkshelf
   class Dependency
     class << self
-      # Returns the name of this cookbook (because it's the key in hash tables).
+      # Returns the name of this cookbook (because it is the key in hash tables).
       #
       # @param [Dependency, #to_s] dependency
       #   the dependency to find the name from
       #
       # @return [String]
       #   the name of the cookbook
-      def name(dependency)
+      def name_for(dependency)
         if dependency.is_a?(Dependency)
           dependency.name.to_s
         else

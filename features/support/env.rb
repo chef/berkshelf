@@ -1,10 +1,3 @@
-# Ruby 3.4 compatibility patch for File.exists? deprecation
-class File
-  class << self
-    alias_method :exists?, :exist? unless method_defined?(:exists?)
-  end
-end
-
 def windows?
   !!(RUBY_PLATFORM =~ /mswin|mingw|windows/)
 end
@@ -30,6 +23,14 @@ at_exit do
 end
 
 Before do
+  # Aruba removes and recreates its working directory as each scenario sets up,
+  # and its own Before hook runs ahead of this one. The in-process launcher
+  # leaves us sitting inside that directory, so by the time we get here the
+  # process can be on an unlinked directory, where any getcwd -- Dir.pwd,
+  # File.expand_path, or a subprocess such as git -- fails with Errno::ENOENT.
+  # Step back out to a directory that always exists. The matching After hook
+  # below keeps us out of it once the scenario is done.
+  Dir.chdir(Berkshelf.root)
 
   # Legacy ENV variables until we can move over to all InProcess
   Berkshelf.instance_variable_set(:@berkshelf_path, nil)
@@ -39,7 +40,6 @@ Before do
 
   aruba.config.command_launcher = :in_process
   aruba.config.main_class = Berkshelf::Cli::Runner
-  @dirs = ["spec/tmp/aruba"] # set aruba's temporary directory
 
   clean_tmp_path
   Berkshelf.initialize_filesystem
@@ -63,6 +63,15 @@ Before do
 
   aruba.config.io_wait_timeout = Cucumber::JRUBY ? 7 : 5
   @aruba_timeout_seconds = Cucumber::JRUBY ? 35 : 15
+end
+
+# Aruba removes and recreates its working directory as each scenario sets up.
+# The in-process launcher leaves us sitting inside that directory, so once it is
+# unlinked any later getcwd -- Dir.pwd, File.expand_path, or a subprocess such as
+# git -- fails with Errno::ENOENT. Step back out to a directory that always
+# exists so the next scenario starts from a valid working directory.
+After do
+  Dir.chdir(Berkshelf.root)
 end
 
 Before("@spawn") do

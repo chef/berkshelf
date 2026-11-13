@@ -31,3 +31,6 @@ Gemfile.local
 gem_graph.png
 Gemfile.lock
 .idea/spec/config/*.pem
+
+# rspec --only-failures state
+spec/.examples.txt

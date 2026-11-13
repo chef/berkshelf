@@ -16,8 +16,7 @@ end
 group :development do
   gem "debug"
   gem "aruba",         "~> 2.3"
-  gem "cucumber",      ">= 9.2", "< 10"
-  gem "cucumber-cucumber-expressions", "~> 17.1"
+  gem "cucumber",      ">= 9.2", "< 12"
   gem "chef-zero",     ">= 4.0"
   gem "fuubar",        ">= 2.0"
   gem "rspec",         ">= 3.0"

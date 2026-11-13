@@ -305,7 +305,7 @@ module Berkshelf
     #
     # @return [Boolean]
     def has_dependency?(dependency)
-      name = Dependency.name(dependency)
+      name = Dependency.name_for(dependency)
       dependencies.map(&:name).include?(name)
     end
 

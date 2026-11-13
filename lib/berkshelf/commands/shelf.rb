@@ -95,7 +95,7 @@ module Berkshelf
       #   if false, the user will need to confirm before uninstalling
       #   if contingencies exist
       def uninstall_cookbook(cookbook, force = false)
-        unless options[:force] || (contingent = contingencies(cookbook)).empty?
+        unless force || (contingent = contingencies(cookbook)).empty?
           contingent = contingent.map { |c| "#{c.cookbook_name} (#{c.version})" }.join(", ")
           confirm = Berkshelf.ui.ask("[#{contingent}] depend on #{cookbook.cookbook_name}.\n\nAre you sure you want to continue? (y/N)")
 

@@ -24,10 +24,30 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.mock_with :rspec
+  # Verify partial doubles, so stubbing a method the real object does not have
+  # is an error rather than a test that quietly asserts a fiction.
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
+
   config.filter_run focus: true
   config.filter_run_excluding not_supported_on_windows: windows?
   config.run_all_when_everything_filtered = true
+
+  # Fail on deprecated RSpec usage instead of printing a warning nobody reads.
+  config.raise_errors_for_deprecations!
+
+  # Records pass/fail per example so `rspec --only-failures` works.
+  config.example_status_persistence_file_path = "spec/.examples.txt"
+
+  config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  # Run examples in a random order so that one leaking state into another fails
+  # visibly, instead of passing forever because the file order happens to hide
+  # it. Seeding from config.seed keeps a failing order reproducible: the seed is
+  # printed with the results and can be replayed with --seed.
+  config.order = :random
+  Kernel.srand config.seed
 
   config.before(:each) do
     Berkshelf.logger = Berkshelf::Logger.new(nil)
