@@ -1,8 +1,8 @@
-<!-- latest_release 8.1.30 -->
-## [v8.1.30](https://github.com/chef/berkshelf/tree/v8.1.30) (2026-11-13)
+<!-- latest_release 8.1.31 -->
+## [v8.1.31](https://github.com/chef/berkshelf/tree/v8.1.31) (2026-11-13)
 
 #### Merged Pull Requests
-- Fix ARM64 macOS runner for Habitat build [#113](https://github.com/chef/berkshelf/pull/113) ([neha-p6](https://github.com/neha-p6))
+- Fix archive content checks with minitar 1.2.0 [#112](https://github.com/chef/berkshelf/pull/112) ([neha-p6](https://github.com/neha-p6))
 <!-- latest_release -->
 
 <!-- release_rollup since=8.1.23 -->
@@ -12,6 +12,7 @@
 - CHEF-37581: Fix SSL certificate verification in Habitat builds and runtime [#106](https://github.com/chef/berkshelf/pull/106) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.25 -->
 
 #### Merged Pull Requests
+- Fix archive content checks with minitar 1.2.0 [#112](https://github.com/chef/berkshelf/pull/112) ([neha-p6](https://github.com/neha-p6)) <!-- 8.1.31 -->
 - Fix ARM64 macOS runner for Habitat build [#113](https://github.com/chef/berkshelf/pull/113) ([neha-p6](https://github.com/neha-p6)) <!-- 8.1.30 -->
 - update NOTICE file [#110](https://github.com/chef/berkshelf/pull/110) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 8.1.29 -->
 - Fix Windows habitat test pipeline: install hab from stable channel [#109](https://github.com/chef/berkshelf/pull/109) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.28 -->
