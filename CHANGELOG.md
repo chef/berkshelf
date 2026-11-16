@@ -1,33 +1,30 @@
-<!-- latest_release 8.1.31 -->
-## [v8.1.31](https://github.com/chef/berkshelf/tree/v8.1.31) (2026-11-13)
-
-#### Merged Pull Requests
-- Fix archive content checks with minitar 1.2.0 [#112](https://github.com/chef/berkshelf/pull/112) ([neha-p6](https://github.com/neha-p6))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=8.1.23 -->
-### Changes not yet released to rubygems.org
-
-#### Bug Fixes
-- CHEF-37581: Fix SSL certificate verification in Habitat builds and runtime [#106](https://github.com/chef/berkshelf/pull/106) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.25 -->
-
-#### Merged Pull Requests
-- Fix archive content checks with minitar 1.2.0 [#112](https://github.com/chef/berkshelf/pull/112) ([neha-p6](https://github.com/neha-p6)) <!-- 8.1.31 -->
-- Fix ARM64 macOS runner for Habitat build [#113](https://github.com/chef/berkshelf/pull/113) ([neha-p6](https://github.com/neha-p6)) <!-- 8.1.30 -->
-- update NOTICE file [#110](https://github.com/chef/berkshelf/pull/110) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 8.1.29 -->
-- Fix Windows habitat test pipeline: install hab from stable channel [#109](https://github.com/chef/berkshelf/pull/109) ([nikhil2611](https://github.com/nikhil2611)) <!-- 8.1.28 -->
-- Remove unreachable Ruby version branches from gemspec [#107](https://github.com/chef/berkshelf/pull/107) ([tas50](https://github.com/tas50)) <!-- 8.1.27 -->
-- CHEF-37331: add Linux ARM Habitat validation in Expeditor pipeline [#105](https://github.com/chef/berkshelf/pull/105) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 8.1.26 -->
-- CHEF-34739: Add macOS aarch64-darwin Habitat plan for berkshelf [#104](https://github.com/chef/berkshelf/pull/104) ([sanghinitin](https://github.com/sanghinitin)) <!-- 8.1.24 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v8.1.31](https://github.com/chef/berkshelf/tree/v8.1.31) (2026-11-16)
+
+#### Bug Fixes
+- CHEF-37581: Fix SSL certificate verification in Habitat builds and runtime [#106](https://github.com/chef/berkshelf/pull/106) ([sanghinitin](https://github.com/sanghinitin))
+
+#### Merged Pull Requests
+- CHEF-34739: Add macOS aarch64-darwin Habitat plan for berkshelf [#104](https://github.com/chef/berkshelf/pull/104) ([sanghinitin](https://github.com/sanghinitin))
+- CHEF-37331: add Linux ARM Habitat validation in Expeditor pipeline [#105](https://github.com/chef/berkshelf/pull/105) ([sanjain-progress](https://github.com/sanjain-progress))
+- Remove unreachable Ruby version branches from gemspec [#107](https://github.com/chef/berkshelf/pull/107) ([tas50](https://github.com/tas50))
+- Fix Windows habitat test pipeline: install hab from stable channel [#109](https://github.com/chef/berkshelf/pull/109) ([nikhil2611](https://github.com/nikhil2611))
+- update NOTICE file [#110](https://github.com/chef/berkshelf/pull/110) ([sanjain-progress](https://github.com/sanjain-progress))
+- Fix ARM64 macOS runner for Habitat build [#113](https://github.com/chef/berkshelf/pull/113) ([neha-p6](https://github.com/neha-p6))
+- Fix archive content checks with minitar 1.2.0 [#112](https://github.com/chef/berkshelf/pull/112) ([neha-p6](https://github.com/neha-p6))
+<!-- latest_stable_release -->
+
 ## [v8.1.23](https://github.com/chef/berkshelf/tree/v8.1.23) (2026-06-18)
 
 #### Merged Pull Requests
 - CHEF-35087: Use appbundler for binstub generation in hab packaging and install latest Habitat in Windows test [#101](https://github.com/chef/berkshelf/pull/101) ([nikhil2611](https://github.com/nikhil2611))
 - CHEF-34832 - Update NOTICE [#103](https://github.com/chef/berkshelf/pull/103) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
 
 ## [v8.1.21](https://github.com/chef/berkshelf/tree/v8.1.21) (2026-03-20)
 
